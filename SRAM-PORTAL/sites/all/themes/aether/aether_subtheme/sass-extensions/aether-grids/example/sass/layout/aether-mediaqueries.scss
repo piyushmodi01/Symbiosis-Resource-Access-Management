@@ -1,0 +1,6 @@
+// Import your base variables here to set vertical rhythm and for overrides.
+@import '../base';
+// Import Aether-grids Media Query classes.
+@import "aether-grids/mediaquery-layout";
+// Layout extends must be imported into both default layout and media queries stylesheets
+@import "layout-extends";

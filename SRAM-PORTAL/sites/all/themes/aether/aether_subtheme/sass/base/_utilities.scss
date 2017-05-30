@@ -1,0 +1,233 @@
+//
+// Sass mixins
+//
+// To use a mixin in this file, add this line to the top of your .scss file:
+//   @import "base";
+// Then to use a mixin for a particular rule, add this inside the ruleset's
+// curly brackets:
+//   @include mix-in-name;
+
+$legacy-support-for-ie6: true !default;
+$legacy-support-for-ie7: true !default;
+
+
+// Clears floats without markup.
+//
+// Takes no arguments.
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+  // IE6
+  @if $legacy-support-for-ie6 {
+    .ie6 & {
+      height: 1%;
+    }
+  }
+  // IE7
+  @if $legacy-support-for-ie7 {
+    .ie7 & {
+      min-height: 1%;
+    }
+  }
+}
+
+// element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+//
+// Takes no arguments.
+@mixin element-invisible {
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    clip: rect(1px 1px 1px 1px); // IE6 and IE7 use the wrong syntax.
+  }
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Allows element to be focusable when navigated to via the keyboard.
+//
+// Takes no arguments.
+@mixin element-focusable {
+  @include element-invisible;
+
+  &:active,
+  &:focus {
+    clip: auto;
+    height: auto;
+    overflow: auto;
+    position: static !important;
+    width: auto;
+  }
+}
+
+// The word "Unpublished" displayed underneath unpublished nodes and comments.
+//
+// Takes no arguments.
+@mixin unpublished-div {
+  color: #d8d8d8;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-size: 75px;
+  font-weight: bold;
+  height: 0;
+  line-height: 1;
+  overflow: visible;
+  text-align: center;
+  text-transform: uppercase;
+  word-wrap: break-word; // A very nice CSS3 property
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    .ie6-7 &>* {
+      position: relative; // Otherwise these elements will appear below the "Unpublished" text.
+    }
+  }
+}
+
+// Center-align a block level element
+//
+// Takes no arguments.
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Opacity
+//
+// $opacity - An opacity value from 0 (invisible) to 100 (opaque).
+@mixin opacity($opacity: 100) {
+  filter: alpha(opacity=$opacity);
+         opacity: $opacity / 100;
+  -khtml-opacity: $opacity / 100;
+    -moz-opacity: $opacity / 100;
+}
+
+// Turn off bullets for an element of a list
+//
+// Takes no arguments.
+@mixin no-bullet {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+}
+
+// Turn off bullets for an entire list
+//
+// Takes no arguments.
+@mixin no-bullets {
+  list-style-image: none;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+// Avoid overflowing text by adding an elipsis.
+//
+// Takes no arguments.
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  @include experimental(text-overflow, ellipsis, not -moz, not -webkit, -o, -ms, not -khtml, official);
+}
+
+// Hide for both screenreaders and browsers
+// css-discuss.incutio.com/wiki/Screenreader_Visibility
+//
+// Takes no arguments.
+@mixin hide-from-all {
+  display:none;
+  visibility:hidden;
+}
+
+// Hide only visually, but have it available for screenreaders
+// www.webaim.org/techniques/css/invisiblecontent/
+// Solution from: j.mp/visuallyhidden - Thanks Jonathan Neal!
+//
+// Takes no arguments.
+@mixin screenreaders-only {
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+
+// Hide visually and from screenreaders, but maintain layout
+//
+// Takes no arguments.
+@mixin invisible {
+  visibility: hidden;
+}
+
+// Adds a custom web font to the page, you must have the font files in css/fonts.
+//
+// $family - The font family name of the font.
+// $file - The actual filename of the font, not including the extension.
+//
+// Compatibility untested.
+@mixin font-face-family($family, $file) {
+  @font-face {
+    font-family: '#{$family}'; font-style: normal;
+    font-weight: normal; 
+    src: font-url('#{$file}.eot'); 
+    src: font-url('#{$file}.eot?#iefix') format('embedded-opentype'),
+         font-url('#{$file}.woff') format('woff'),
+         font-url('#{$file}.ttf') format('truetype'),
+         font-url('#{$file}.svg##{$family}') format('svg'),
+         font-url('#{$file}.otf') format('opentype');
+  }
+}
+
+// Makes the footer stick to the bottom of the page, footer must have fixed height.
+//
+// $footer-height - The static height of the footer.
+// $root-selector - The wrapper class (footer must be just outside this element).
+// $root-footer-selector - A specially added class in an element just before the end of the wrapper.
+// $footer-selector - The class of your footer.
+//
+// Compatibility untested.
+@mixin sticky-footer(
+  $footer-height,
+  $root-selector: unquote("#page"),
+  $root-footer-selector: unquote("#page_footer"),
+  $footer-selector: unquote("#footer")
+  ) {
+  html, body {
+    height: 100% !important;
+  }
+  body.toolbar {
+    height: 92.5% !important;
+  }
+  #{$root-selector} {
+    clear: both;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -$footer-height*2;
+  #{$root-footer-selector} {
+      height: $footer-height*2;
+    }
+  }
+  #{$footer-selector} {
+    clear: both;
+    padding-top: -$footer-height;
+    height: $footer-height;
+  }
+}
+
+// Add white to a color via a percentage modifier.
+//
+// $color - Any color value (ex. #222 or red).
+// $percent - A percentage value (ex. 40%)
+@function tint($color, $percent){
+  @return mix(white, $color, $percent);
+}
+
+// Add white to a color via a percentage modifier.
+//
+// $color - Any color value (ex. #0000FF or blue).
+// $percent - A percentage value (ex. 40%)
+@function shade($color, $percent){
+  @return mix(black, $color, $percent);
+}

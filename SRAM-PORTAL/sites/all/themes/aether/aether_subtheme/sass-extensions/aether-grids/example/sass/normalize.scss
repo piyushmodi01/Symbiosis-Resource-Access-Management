@@ -1,0 +1,497 @@
+@import 'base';
+@import "compass/typography/vertical_rhythm";
+/*
+ * Normalize
+ */
+
+// HTML5 display definitions.
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+dialog,
+summary {
+  display: block;
+}
+
+// Vertical Rhythm, add and/or remove tags as your baseline grid needs.
+
+p,
+blockquote,
+q,
+pre,
+address,
+hr,
+code,
+samp,
+dl,
+ol,
+ul,
+form,
+table,
+fieldset,
+menu,
+figure,
+figcaption,
+button,
+hr {
+  @include margin-leader(0);
+  @include margin-trailer(1, $base-font-size);
+}
+
+// Corrects inline-block not defined in IE6/7/8 and FF3.
+
+audio,
+canvas,
+video {
+  display: inline-block;
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    *display: inline;
+    *zoom: 1;
+  }
+}
+
+audio:not([controls]) {
+  display: none;
+}
+
+// Ensures content is hidden from all presentations, including screenreaders.
+
+[hidden] {
+  display: none;
+}
+
+// Base structure
+
+html {
+  font-size: 100%;
+  height: 100%;
+  // Prevent iOS text size adjust on orientation change without disabling user zoom.
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+// Addresses font-family inconsistency between 'textarea' and other form elements.
+
+html,
+button,
+input,
+select,
+textarea {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+// Fonts settings based on the 100E2R standard: http://www.informationarchitects.jp/en/100e2r/.
+
+button,
+input,
+select,
+textarea {
+  color: #ccc;
+  font-family: $text-font-family;
+}
+
+/* Links */
+
+// Addresses outline displayed oddly in Chrome.
+
+a:focus {
+  outline: thin dotted;
+}
+
+// Improves readability when focused and also mouse hovered in all browsers.
+// people.opera.com/patrickl/experiments/keyboard/test
+
+a:hover,
+a:active {
+  outline: 0;
+}
+
+// Embedded content
+
+img,
+object,
+video {
+  max-width: 100%;
+// Automatically scales images larger than the container. Consider this first: http://unstoppablerobotninja.com/entry/fluid-images/
+// _width: 100%; // IE6 doesn't support max-width, so we just use width.
+// If the image is larger than the container, just uncomment this. 
+// If it is smaller than the container, uncomment and change the 100% value to an absolute one.
+}
+
+@if $legacy-support-for-ie6 {
+  @media only screen and (max-width: 768px) {
+    .ie6 #main img {
+      width: 100%;
+    }
+  }
+}
+
+img {
+  border: 0;
+  // Improve IE's resizing of images: css-tricks.com/ie-fix-bicubic-scaling-for-images
+  .ie6-7 & {
+    -ms-interpolation-mode: bicubic;
+  }
+  // Workaround for responsive images in ie6, only resize in sidebars.
+  @if $legacy-support-for-ie6 {
+    .ie6 .region-sidebar-first &,
+    .ie6 .region-sidebar-second & {
+      width: 100%;
+    }
+  }
+}
+
+// Corrects overflow displayed oddly in IE9.
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+// Reintroduce inner spacing in 'table' to avoid overlap and whitespace issues in IE6/7.
+
+// IE7
+@if $legacy-support-for-ie7 {
+  .ie6-7 {
+    table {
+      button,
+      input {
+        overflow: auto;
+      }
+    }
+  }
+}
+
+/* Lists */
+
+dl,
+menu,
+ol,
+ul,
+.item-list ul /* Drupal override */ {
+  // Sets 1 unit of vertical rhythm on the top and bottom margin.
+  margin: rhythm(1) 0;
+}
+
+.item-list ul li /* Drupal override */ {
+  margin: 0;
+}
+
+dd {
+  /* LTR */
+  margin: 0 0 0 $typographic-indent;
+}
+
+ul,
+ol,
+.item-list ul,
+.item-list ol {
+  ul,
+  ol {
+    margin: 0; // Turn off margins on nested lists.
+  }
+}
+
+/* Addresses paddings set differently in IE6/7 */
+
+menu,
+ol,
+ul,
+.item-list ul /* Drupal override */ {
+  padding: 0 0 0 $typographic-indent;
+}
+
+// Corrects list images handled incorrectly in IE7 .
+
+nav ul,
+nav ol {
+  list-style: none;
+  list-style-image: none;
+}
+
+// Print styles inlined to avoid extra HTTP connection.
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    filter: none !important;
+    // Black prints faster: sanbeiji.com/archives/953
+    -ms-filter: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+    &:visited {
+      text-decoration: underline;
+    }
+    &[href]:after {
+      content: " (" attr(href) ")";
+    }
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  // Do not show javascript and internal links.
+  a {
+    &[href^="javascript:"]:after,
+    &[href^="#"]:after {
+      content: "";
+    }
+  }
+  // Printing Tables: css-discuss.incutio.com/wiki/Printing_Tables
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  @page {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+// Converts px to em in case you do need relative units in your output.
+@function px-to-em($value, $em-ratio: $base-em-ratio) {
+  @return $value * $em-ratio;
+}
+
+// Vertical Rhythm borders
+$typographic-indent: 1.625em !default;
+
+// Font Stacks
+$header-font-family: Palatino, "Helvetica Neue",Helvetica,Arial,sans-serif !default;
+$text-font-family: "Helvetica Neue", "Helvetica", Arial, "Liberation Sans", FreeSans, sans-serif !default;
+$mono-font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+
+@include establish-baseline($base-font-size);
+
+/* Headings/small */
+
+// Font sizes are based on the golden ratio of 16
+// See this for the modular scale: ow.ly/5jGl6
+// Line-heights and margins are adjusted to keep a 26px (1.625em) vertical rhythm across elements
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font-family;
+  font-size: px-to-em($base-font-size);
+  font-weight: bold;
+}
+
+h1 {
+  @include adjust-font-size-to($font-size-xxxl,2);
+  @include margin-leader(0, $font-size-xxxl);
+  @include margin-trailer(1, $font-size-xxxl);
+}
+
+h2 {
+  @include adjust-font-size-to($font-size-xxl,2);
+  @include margin-leader(0, $font-size-xxl);
+  @include margin-trailer(1, $font-size-xxl);
+}
+
+h3 {
+  @include adjust-font-size-to($font-size-xl,1);
+  @include margin-leader(0, $font-size-xl);
+  @include margin-trailer(1, $font-size-xl);
+}
+
+h4 {
+  @include adjust-font-size-to($font-size-lg,1);
+  @include margin-leader(0, $font-size-lg);
+  @include margin-trailer(1, $font-size-lg);
+}
+
+h5 {
+  @include adjust-font-size-to($font-size-md,1);
+  @include margin-leader(0, $font-size-md);
+  @include margin-trailer(1, $font-size-md);
+}
+
+h6 {
+  @include adjust-font-size-to($font-size-md,1);
+  @include margin-leader(0, $font-size-md);
+  @include margin-trailer(1, $font-size-md);
+  color: #eee;
+}
+
+small {
+  @include margin-leader(0, $font-size-xxs);
+  @include margin-trailer(1, $font-size-xxs);
+  font-size: px-to-em($font-size-xxs);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  small {
+    color: #eee;
+  }
+}
+
+/* Abbreviations */
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+// Position 'sub' and 'sup' without affecting line-height: gist.github.com/413930
+
+sub {
+  @include adjust-font-size-to($font-size-xxs,0);
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  @include adjust-font-size-to($font-size-xxs,0);
+  position: relative;
+  top: -0.5em;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  display: block;
+  height: 1px;
+}
+
+/* Figures */
+
+figure {
+  margin: 0;
+}
+
+// Preformatted text and code
+
+// Allows line wrapping of 'pre'
+
+pre {
+  @include adjust-font-size-to($font-size-normal,1);
+  font-family: $mono-font-family;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+code,
+kbd,
+samp {
+  @include adjust-font-size-to($font-size-normal,0.9);
+  font-family: $mono-font-family;
+}
+
+/* Quotes */
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote,
+q,
+cite {
+  font-style: italic;
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+blockquote {
+  border-left: 1px solid #ccc;
+  padding-left: $typographic-indent;
+  padding-right: 20px;
+  > p {
+    padding: 0;
+  }
+}
+
+/* Description Lists */
+dl {
+  @include margin-trailer(1, $base-font-size);
+  dt,
+  dd {
+    line-height: px-to-em($base-line-height);
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin-left: $typographic-indent / 2;
+  }
+}
+
+/* Marked/inserted/deleted text */
+
+mark {
+  background: #ddd;
+}
+
+ins {
+  background: #ddd;
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+/* Others */
+
+strong,
+b,
+dt {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+var,
+address {
+  font-style: normal;
+}

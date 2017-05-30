@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:title="About Us">
+        <menu>
+            <item
+                android:id="@+id/nav_aboutSIU"
+                android:icon="@drawable/aboutlogo"
+                android:title="About SIU" />
+            <item
+                android:id="@+id/aboutSICSR"
+                android:icon="@drawable/aboutlogo"
+                android:title="About SICSR" />
+            <item
+                android:id="@+id/aboutMentor"
+                android:icon="@drawable/aboutlogo"
+                android:title="About Our Mentor" />
+        </menu>
+    </item>
+
+
+
+    <item android:title="Reach the Developer">
+        <menu>
+            <item
+                android:id="@+id/nav_fbLink"
+                android:icon="@drawable/aboutlogo"
+                android:title="Facebook" />
+            <item
+                android:id="@+id/nav_twitterLink"
+                android:icon="@drawable/aboutlogo"
+                android:title="Twitter" />
+            <item
+                android:id="@+id/nav_gmailLink"
+                android:icon="@drawable/aboutlogo"
+                android:title="G-Mail" />
+        </menu>
+    </item>
+
+        <item
+            android:id="@+id/ExitFromApp"
+            android:icon="@drawable/logout"
+            android:title="Log Out" />
+
+
+
+
+
+</menu>

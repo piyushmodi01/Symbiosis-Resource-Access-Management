@@ -1,0 +1,22 @@
+Regular Expressions in javascript:
+
+Regular Expressions are used for validating the data which is entered by the user.
+
+Basic syntax:-
+
+var RegularExpression=/pattern/
+
+a caret(^)may be used to indicate the beginning of the string
+a dollar sign($)is used to mark the end.
+
+Examples:-
+1. javascript // Matches "Isn't javascript great?"
+2. ^javascript // Matches "javascript rules!",
+        // not "what is javascript?"
+		
+		
+[] brackets use for single value.
+
+? mean optional.
+
+		

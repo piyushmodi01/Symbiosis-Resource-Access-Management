@@ -1,0 +1,12 @@
+E - Experience		(determines how fondly people remembers the interaction)
+D - Discoverability	(determines how the product works)
+
+	A - Affordance  		(Possibility of actions on an object OR Relation between human action and an object)
+	S - Signifier			(sign, clue to communicate with an object)
+	C - Constrains			(Opposite of Affordance, what you cannot do, Complimentary with Affordance to tell
+			 		user what he cannot do (eg Grayed out menus in softwares))
+	M - Mapping			(Relationship between two different set of things)
+	C - Conceptual Model 		(Representation of a System, Simplified explanation of the working of a system)
+	S - System Image		(Information conveyed to the user through an object)
+
+F - Feedback 		(result of an action)

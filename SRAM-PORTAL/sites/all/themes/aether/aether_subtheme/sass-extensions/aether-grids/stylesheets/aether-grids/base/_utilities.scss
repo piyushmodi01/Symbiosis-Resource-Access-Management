@@ -1,0 +1,22 @@
+// clearfix as defined by Drupal
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+  // IE6
+  @if $legacy-support-for-ie6 {
+    .ie6 & {
+      height: 1%;
+    }
+  }
+  // IE7
+  @if $legacy-support-for-ie7 {
+    .ie7 & {
+      min-height: 1%;
+    }
+  }
+}

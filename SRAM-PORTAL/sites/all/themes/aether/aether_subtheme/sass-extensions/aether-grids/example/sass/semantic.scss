@@ -1,0 +1,51 @@
+@import 'base';
+// Import Aether-grids utilities.
+@import 'aether-grids/layout/grid-utilities';
+
+$aether-grid-type: fixed;
+$aether-columns: 12;
+$aether-grid-width: 1148px;
+$aether-include-grid-item-base: true;
+
+html { 
+  overflow:auto; 
+  overflow-x:hidden;
+}
+
+@include limiter(".page");
+
+.main {
+  @include container(full);
+  .block1 {
+    @include span-columns(12);
+  }
+  .block2 {
+    @include span-columns(8);
+    .nestedrow {
+      @include container(nested);
+      .block2-1 {
+        @include span-columns(4);
+      }
+      .block2-2 {
+        @include span-columns(4);
+      }
+    }
+  }
+  .block3 {
+    @include span-columns(4);
+  }
+}
+  
+#postscript {
+  @include container(full);
+  .block1, .block2, .block3 {
+    @include span-columns(4);
+  }
+}
+
+footer {
+  @include container(full);
+  p {
+    @include span-columns(12);
+  }
+}

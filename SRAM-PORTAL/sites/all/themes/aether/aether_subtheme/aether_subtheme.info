@@ -1,0 +1,296 @@
+; --------------------------------------------------------------------------------
+; Theme information
+; --------------------------------------------------------------------------------
+
+name = Aether Starterkit
+description = Aether starterkit for Aether, use drush to create a new subtheme using: drush aether newthemename
+screenshot = images/screenshot.png
+core = "7.x"
+engine = phptemplate
+base theme  = aether
+
+
+; --------------------------------------------------------------------------------
+; Regions
+; --------------------------------------------------------------------------------
+
+regions[page_top] = Page top
+regions[branding] = Branding
+regions[user_first] = User first
+regions[user_second] = User second
+regions[header_first] = Header first
+regions[header_second] = Header second
+regions[header_third] = Header third
+regions[main_menu] = Main Menu
+regions[navigation_first] = Navigation first
+regions[navigation_second] = Navigation second
+regions[feature] = Feature
+regions[preface_first] = Preface first
+regions[preface_second] = Preface second
+regions[preface_third] = Preface third
+regions[highlight] = Highlight
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = First sidebar
+regions[sidebar_second] = Second sidebar
+regions[postscript_first] = Postscript first
+regions[postscript_second] = Postscript second
+regions[postscript_third] = Postscript third
+regions[postscript_fourth] = Postscript fourth
+regions[footer_first] = Footer first
+regions[footer_second] = Footer second
+regions[footer_third] = Footer third
+regions[footer_fourth] = Footer fourth
+regions[footer] = Footer
+regions[page_bottom] = Page bottom
+
+; --------------------------------------------------------------------------------
+; Features supported by this theme.
+; --------------------------------------------------------------------------------
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = search
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu
+
+; --------------------------------------------------------------------------------
+; First we remove the system's menu styling since Aether has its own.
+; --------------------------------------------------------------------------------
+
+stylesheets[all][] = system.menus.css
+stylesheets[all][] = system.menus-rtl.css
+
+; --------------------------------------------------------------------------------
+; Add required stylesheets, custom-css.css is not compiled from sass.
+; --------------------------------------------------------------------------------
+
+stylesheets[all][] = css/layout/aether-default.css
+stylesheets[all][] = css/layout/aether-visibility.css
+stylesheets[all][] = css/screen.css
+stylesheets[all][] = css/custom-scss.css
+stylesheets[all][] = css/custom-css.css
+stylesheets[all][] = css/wireframes.css
+
+; --------------------------------------------------------------------------------
+; Optionally add some JavaScripts to your theme.
+; --------------------------------------------------------------------------------
+
+; scripts[] = js/yourscript.js
+
+; --------------------------------------------------------------------------------
+; Theme Settings Defaults.
+; --------------------------------------------------------------------------------
+
+; Standard defaults.
+settings[aether_tabs] = 1
+settings[aether_breadcrumb_separator] = ' » '
+settings[wireframe_mode] = 0
+settings[clear_registry] = 0
+
+; Responsive javascript.
+settings[aether_polyfills][] = respond
+settings[aether_polyfills][] = html5
+settings[aether_polyfills][] = meta
+settings[aether_polyfills][] = selectivizr
+settings[aether_polyfills][] = imgsizer
+settings[aether_polyfills][] = responsive_tables
+settings[aether_polyfills][] = ios_orientation_fix
+
+; Hide or show layout tab in theme-settings.
+settings[show_layout] = 1;
+
+; Amount of media queries to use, must equal 5 for now.
+settings[media_queries] = '5'
+
+; Semantic names of each media query
+settings[media_name1] = 'Desktop'
+settings[media_name2] = 'Tablet Landscape'
+settings[media_name3] = 'Tablet'
+settings[media_name4] = 'Handheld Landscape'
+settings[media_name5] = 'Handheld'
+
+; Base css prefixes for each of the 5 media queries.
+settings[grid_prefix1] = g-d-
+settings[grid_prefix2] = g-tl-
+settings[grid_prefix3] = g-t-
+settings[grid_prefix4] = g-hl-
+settings[grid_prefix5] = g-h-
+
+; Enable all 5 media queries, '0' for off, '1' for on.
+settings[layout_options][] = '1'
+
+; Enable navigation to grid, '0' for off, '2' for on.
+settings[layout_options][] = '0'
+
+; Grid debugging css, '0' for off, '1' for on.
+settings[grid_background][] = '0'
+
+; Gutter and Grid numbers must match sass variables.
+
+; Gutter width choices in pixels.
+settings[gutter_width] = 20
+
+; Supported grids for each of the 5 media queries.
+settings[theme_grid1] = grid12-1148
+settings[theme_grid_options1][] = grid12-1148
+settings[theme_grid2] = grid12-968
+settings[theme_grid_options2][] = grid12-968
+settings[theme_grid3] = grid12-752
+settings[theme_grid_options3][] = grid12-752
+settings[theme_grid4] = grid12-428
+settings[theme_grid_options4][] = grid12-428
+settings[theme_grid5] = grid12-308
+settings[theme_grid_options5][] = grid12-308
+
+; Sidebar layout defaults for each of the 5 media queries.
+settings[sidebar_layout1] = '1'
+settings[sidebar_layout2] = '1'
+settings[sidebar_layout3] = '8'
+settings[sidebar_layout4] = '9'
+settings[sidebar_layout5] = '9'
+
+; User region width defaults for each of the 5 media queries.
+settings[user_first_width1] = '6'
+settings[user_first_width2] = '6'
+settings[user_first_width3] = '6'
+settings[user_first_width4] = '12'
+settings[user_first_width5] = '12'
+
+settings[user_second_width1] = '6'
+settings[user_second_width2] = '6'
+settings[user_second_width3] = '6'
+settings[user_second_width4] = '12'
+settings[user_second_width5] = '12'
+
+; Header region width defaults for each of the 5 media queries.
+settings[header_first_width1] = '4'
+settings[header_first_width2] = '4'
+settings[header_first_width3] = '6'
+settings[header_first_width4] = '12'
+settings[header_first_width5] = '12'
+
+settings[header_second_width1] = '4'
+settings[header_second_width2] = '4'
+settings[header_second_width3] = '6'
+settings[header_second_width4] = '12'
+settings[header_second_width5] = '12'
+
+settings[header_third_width1] = '4'
+settings[header_third_width2] = '4'
+settings[header_third_width3] = '12'
+settings[header_third_width4] = '12'
+settings[header_third_width5] = '12'
+
+; Preface region width defaults for each of the 5 media queries.
+settings[preface_first_width1] = '4'
+settings[preface_first_width2] = '4'
+settings[preface_first_width3] = '6'
+settings[preface_first_width4] = '12'
+settings[preface_first_width5] = '12'
+
+settings[preface_second_width1] = '4'
+settings[preface_second_width2] = '4'
+settings[preface_second_width3] = '6'
+settings[preface_second_width4] = '12'
+settings[preface_second_width5] = '12'
+
+settings[preface_third_width1] = '4'
+settings[preface_third_width2] = '4'
+settings[preface_third_width3] = '12'
+settings[preface_third_width4] = '12'
+settings[preface_third_width5] = '12'
+
+; Individual width defaults for each main menu li on each of the 5 media queries.
+settings[nav_link_width1] = '2'
+settings[nav_link_width2] = '2'
+settings[nav_link_width3] = '2'
+settings[nav_link_width4] = '4'
+settings[nav_link_width5] = '4'
+
+; Navigation region width defaults for each of the 5 media queries.
+settings[navigation_first_width1] = '9'
+settings[navigation_first_width2] = '9'
+settings[navigation_first_width3] = '12'
+settings[navigation_first_width4] = '12'
+settings[navigation_first_width5] = '12'
+
+settings[navigation_second_width1] = '3'
+settings[navigation_second_width2] = '3'
+settings[navigation_second_width3] = '12'
+settings[navigation_second_width4] = '12'
+settings[navigation_second_width5] = '12'
+
+; Sidebar widths for each of the 5 media queries.
+settings[sidebar_first_width1] = '3'
+settings[sidebar_first_width2] = '3'
+settings[sidebar_first_width3] = '3'
+settings[sidebar_first_width4] = '3'
+settings[sidebar_first_width5] = '3'
+
+settings[sidebar_second_width1] = '3'
+settings[sidebar_second_width2] = '3'
+settings[sidebar_second_width3] = '3'
+settings[sidebar_second_width4] = '3'
+settings[sidebar_second_width5] = '3'
+
+; Postscript region width defaults for each of the 5 media queries.
+settings[postscript_first_width1] = '3'
+settings[postscript_first_width2] = '3'
+settings[postscript_first_width3] = '6'
+settings[postscript_first_width4] = '12'
+settings[postscript_first_width5] = '12'
+
+settings[postscript_second_width1] = '3'
+settings[postscript_second_width2] = '3'
+settings[postscript_second_width3] = '6'
+settings[postscript_second_width4] = '12'
+settings[postscript_second_width5] = '12'
+
+settings[postscript_third_width1] = '3'
+settings[postscript_third_width2] = '3'
+settings[postscript_third_width3] = '6'
+settings[postscript_third_width4] = '12'
+settings[postscript_third_width5] = '12'
+
+settings[postscript_fourth_width1] = '3'
+settings[postscript_fourth_width2] = '3'
+settings[postscript_fourth_width3] = '6'
+settings[postscript_fourth_width4] = '12'
+settings[postscript_fourth_width5] = '12'
+
+; Footer region width defaults for each of the 5 media queries.
+settings[footer_first_width1] = '3'
+settings[footer_first_width2] = '3'
+settings[footer_first_width3] = '6'
+settings[footer_first_width4] = '12'
+settings[footer_first_width5] = '12'
+
+settings[footer_second_width1] = '3'
+settings[footer_second_width2] = '3'
+settings[footer_second_width3] = '6'
+settings[footer_second_width4] = '12'
+settings[footer_second_width5] = '12'
+
+settings[footer_third_width1] = '3'
+settings[footer_third_width2] = '3'
+settings[footer_third_width3] = '6'
+settings[footer_third_width4] = '12'
+settings[footer_third_width5] = '12'
+
+settings[footer_fourth_width1] = '3'
+settings[footer_fourth_width2] = '3'
+settings[footer_fourth_width3] = '6'
+settings[footer_fourth_width4] = '12'
+settings[footer_fourth_width5] = '12'
+
+; Information added by drupal.org packaging script on 2012-07-23
+version = "7.x-1.0-alpha18"
+core = "7.x"
+project = "aether"
+datestamp = "1343071578"
+

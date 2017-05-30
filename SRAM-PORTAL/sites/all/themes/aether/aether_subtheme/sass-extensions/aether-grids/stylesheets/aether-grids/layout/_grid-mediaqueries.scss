@@ -1,0 +1,55 @@
+@import '../base';
+
+@mixin respond-to($aether-device) {
+  // Used by visibility classes only
+  @if $aether-device == handheld {
+    @media only screen and (max-width: $aether-break-small - 1) {
+      @content;
+    }
+  }
+  @if $aether-device == handheld-landscape {
+    @media only screen and (min-width: $aether-break-small) and (max-width: $aether-break-medium - 1) {
+      @content;
+    }
+  }
+  @if $aether-device == tablet {
+    @media only screen and (min-width: $aether-break-medium) and (max-width: $aether-break-large - 1) {
+      @content;
+    }
+  }
+  @if $aether-device == tablet-landscape {
+    @media only screen and (min-width: $aether-break-large) and (max-width: $aether-break-wide - 1) {
+      @content;
+    }
+  }
+  @if $aether-device == tablet-all {
+    @media only screen and (min-width: $aether-break-medium) and (max-width: $aether-break-wide - 1) {
+      @content;
+    }
+  }
+  // Used by visibility classes only
+  @if $aether-device == desktop {
+    @media only screen and (min-width: $aether-break-wide) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-below($aether-device) {
+  // Used by visibility classes only
+  @if $aether-device == tablet {
+    @media only screen and (max-width: $aether-break-medium - 1) {
+      @content;
+    }
+  }
+  @if $aether-device == tablet-landscape {
+    @media only screen and (max-width: $aether-break-large - 1) {
+      @content;
+    }
+  }
+  @if $aether-device == desktop {
+    @media only screen and (max-width: $aether-break-wide - 1) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,515 @@
+@import '../base';
+@import '../base/utilities';
+@import "compass/utilities/general/float";
+@import "compass/css3/background-clip";
+@import "compass/css3/box-sizing";
+
+$aether-grid-type: fixed !default;
+$aether-columns: 12 !default;
+$aether-grid-width: 1148px !default;
+$aether-gutter-width: 20px !default;
+$aether-padding-width: 0 !default;
+$aether-media: "d" !default;
+$aether-include-grid-item-base: false !default;
+$aether-limiter-class: '.limiter';
+
+@function col-width($columns: $aether-columns, $grid-width: $aether-grid-width) {
+  $col-width: floor((($grid-width - (($columns - 1) * $aether-gutter-width + 2 * $aether-gutter-width)) / $columns));
+  $page-width: $col-width * $columns + (($columns - 1) * $aether-gutter-width) + (2 * $aether-gutter-width);
+    
+  @if ($col-width > 0 and $columns > 0) {
+    @if (($page-width > $grid-width) or ($page-width < $grid-width)) {
+      @warn "Your math is wrong, check your grid values and try again.";
+      @debug #{$grid-width} minus #{$aether-gutter-width} should divide evenly with #{$columns};
+    }
+  }
+  @return $col-width;
+}
+
+@mixin grid-item-base(
+  $float-direction: $aether-float-direction,
+  $gutter-width: gutter(),
+  $box-sizing: $aether-box-sizing
+) {
+  $grid-width: $aether-grid-width;
+  @if $aether-column-padding-v > 0 and $aether-column-padding-h > 0 {
+    padding: $aether-column-padding-v $aether-column-padding-h;
+  }
+  @include box-sizing($box-sizing);
+  @include background-clip(padding-box);
+  @include float($float-direction);
+}
+
+@mixin span-columns(
+  $n,
+  $columns: $aether-columns,
+  $float-direction:''
+) {
+  $grid-width: $aether-grid-width;
+  $column-width: col-width($columns,$grid-width);
+  $grid-width: $grid-width - gutter();
+  $span-col-px: ($n * gutter() + $n * $column-width) - gutter();
+  $half-gutter: gutter($aether-gutter-width, half);
+  margin: {
+    @if $aether-grid-type == fluid or $aether-grid-type == hybrid {
+      left: percentage($half-gutter / $grid-width);
+      right: percentage($half-gutter / $grid-width);
+    } @else {
+      left: gutter($aether-gutter-width, half);
+      right: gutter($aether-gutter-width, half);
+    }
+  }
+  @if $aether-include-grid-item-base == true {
+    @include grid-item-base;
+  }
+  @if $float-direction == right {
+    float: right;
+  }
+  @if $float-direction == left {
+    float: left;
+  }
+  @if $aether-grid-type == fluid or $aether-grid-type == hybrid {
+    width: percentage($span-col-px / $grid-width);
+  }
+  @else {
+    width: $span-col-px;
+  }
+}
+
+@mixin box($n, $columns: $aether-columns, $margin: 0, $padding: 0.5em, $float-direction: none) {
+  @include span-columns($n, $columns, $float-direction);
+  @include box-sizing($box-sizing);
+  @include background-clip(padding-box);
+  $dir: $float-direction;
+  @if $aether-float-direction == right {
+    $dir: aether-reverse-dir($dir);
+  }
+  @include float($dir);
+  margin: $margin;
+  padding: $padding;
+}
+
+@mixin offset(
+  $n,
+  $columns: $aether-columns
+) {
+  $grid-width: $aether-grid-width;
+  $column-width: col-width($columns,$grid-width);
+  $grid-width: $grid-width - gutter();
+  $offset-left-px: $n * gutter() + $n * $column-width;
+  @if $aether-grid-type == fluid or $aether-grid-type == hybrid {
+    margin: {
+      @if $aether-float-direction == right {
+        right: percentage($offset-left-px / $grid-width);
+      }
+      @else {
+        left: percentage($offset-left-px / $grid-width);
+      }
+    }
+    width: 100%
+  }
+  @else {
+    margin: {
+      @if $aether-float-direction == right {
+        right: $offset-left-px;
+      }
+      @else {
+        left: $offset-left-px;
+      }
+    }
+  }
+}
+
+@mixin push(
+  $n,
+  $columns: $aether-columns
+) {
+  $grid-width: $aether-grid-width;
+  $column-width: col-width($columns,$grid-width);
+  $grid-width: $grid-width - gutter();
+  $push-left-px: ($n * gutter() + $n * $column-width) + gutter($aether-gutter-width, half);
+  $push-right-px: (-$n * gutter() - $n * $column-width) + gutter($aether-gutter-width, half);
+  @if $aether-grid-type == fluid {
+    margin: {
+      @if $aether-float-direction == right or $aether-grid-type == hybrid {
+        right: percentage($push-left-px / $grid-width);
+        left: percentage($push-right-px / $grid-width);
+      }
+      @else {
+        left: percentage($push-left-px / $grid-width);
+        right: percentage($push-right-px / $grid-width);
+      }
+    }
+  }
+  @else {
+    margin: {
+      @if $aether-float-direction == right {
+        right: $push-left-px;
+        left: $push-right-px;
+      }
+      @else {
+        left: $push-left-px;
+        right: $push-right-px;
+      }
+    }
+  }
+}
+
+@mixin pull(
+  $n,
+  $columns: $aether-columns
+) {
+  $grid-width: $aether-grid-width;
+  $column-width: col-width($aether-columns,$grid-width);
+  $grid-width: $grid-width - gutter();
+  $pull-left-px: (-$n * gutter() - $n * $column-width) + gutter($aether-gutter-width, half);
+  @if $aether-grid-type == fluid {
+    margin: {
+      @if $aether-float-direction == right or $aether-grid-type == hybrid {
+        right: percentage($pull-left-px / $grid-width);
+      }
+      @else {
+        left: percentage($pull-left-px / $grid-width);
+      }
+    }
+  }
+  @else {
+    margin: {
+      @if $aether-float-direction == right {
+        right: $pull-left-px;
+      }
+      @else {
+        left: $pull-left-px;
+      }
+    }
+  }
+}
+
+@function gutter(
+  $gutter-width: $aether-gutter-width,
+  $gutter-size: '') {
+  @if $gutter-size == half {
+    $half-gutter: $gutter-width / 2;
+    @if unit($gutter-width) == "px" {
+      @return ceil($half-gutter);
+    }
+    @return $half-gutter;
+  }
+  @else {
+    @return $gutter-width;
+  }
+}
+
+@mixin container($aether-context: nested, $grid-width:$aether-grid-width) {
+  $half-gutter-padding: (gutter($aether-gutter-width,half) + $aether-column-padding-h)*-1;
+  $half-gutter: gutter($aether-gutter-width,half)*1;
+  @include clearfix();
+  @if $aether-context == 'nested' {
+    margin: {
+      @if $aether-grid-type == fluid or $aether-grid-type == hybrid {
+        left: percentage($half-gutter-padding / $grid-width);
+        right: percentage($half-gutter-padding / $grid-width);
+      } @else {
+        left: $half-gutter-padding;
+        right: $half-gutter-padding;
+      }
+    }
+  } 
+  @else if $aether-context == 'full' {
+    margin: {
+    @if $aether-grid-type == fluid or $aether-grid-type == hybrid {
+      left: percentage($half-gutter / $grid-width);
+      right: percentage($half-gutter / $grid-width);
+    } @else {
+      left: gutter($aether-gutter-width,half)*1;
+      right: gutter($aether-gutter-width,half)*1;
+    }
+    }
+  }
+}
+
+@mixin limiter(
+  $limiter: $aether-limiter-class,
+  $target: $aether-grid-width,
+  $context: $aether-break-wide,
+  $constraint: false
+) {
+  #{$limiter} {
+    margin-left: auto;
+    margin-right: auto;
+    @if $aether-grid-type == fluid {
+      @if $constraint {
+        #{$constraint}-width: $target;
+      }
+      $target: percentage($target / $context);
+      @if $target > 100% {
+        width: 100%;
+      }
+      @else {
+        width: $target;
+      }
+    }
+    @else {
+      width: $target;
+    }
+  }
+}
+
+@mixin extend-layout(
+  $extend-layout-1: $aether-media $aether-columns,
+  $extend-layout-2: false,
+  $extend-layout-3: false,
+  $extend-layout-4: false,
+  $extend-layout-5: false,
+  $extend-layout-6: false,
+  $extend-layout-7: false,
+  $extend-layout-8: false,
+  $extend-layout-9: false,
+  $extend-layout-10: false
+  ) {
+  $layouts: compact($extend-layout-1,$extend-layout-2,$extend-layout-3,$extend-layout-4,$extend-layout-5,$extend-layout-6,$extend-layout-7,$extend-layout-8,$extend-layout-9,$extend-layout-10);
+  $media: false;
+  $columns: false;
+  $function: false;
+  @each $layout in $layouts {
+    @if length($layout) == 1 {
+      $layout: append($layout, nth($layouts, 2));
+      $media: nth($layout, 1);
+      $columns: nth($layout, 2);
+      @extend .#{$aether-gridprefix}-#{$media}-#{$columns};
+    } @else if length($layout) == 2 {
+      $media: nth($layout, 1);
+      $columns: nth($layout, 2);
+      @extend .#{$aether-gridprefix}-#{$media}-#{$columns};
+    }
+    @else if length($layout) == 3 {
+      $media: nth($layout, 1);
+      $columns: nth($layout, 2);
+      $function: nth($layout, 3);
+      @if $function == right {
+        @extend .#{$aether-gridprefix}-#{$media}-#{$columns};
+        @extend .#{$aether-gridprefix}-#{$media}-right;
+      } @else {
+        @extend .#{$aether-gridprefix}-#{$media}-#{$function}#{$columns};
+      }
+    }
+  }
+}
+
+
+// ---------------------------------------------------------------------------
+// Aether Grids Background
+//
+// A wrapper for the compass "grid-background" mixin.
+// Note: Sub-pixel rounding can lead to several pixels of variation between browsers.
+@mixin aether-grid-background($columns: $aether-columns, $grid-width: $aether-grid-width) {
+  @if $aether-show-grid-background {
+    $col-width: col-width($columns,$grid-width);
+    $gutter-width: gutter();
+    $base-line-height: $aether-base-line-height;
+    @if $aether-grid-type == fluid {
+      $grid-background-force-fluid: true;
+    }
+    @include grid-background(
+      $columns,
+      $col-width,
+      gutter(),
+      $base-line-height,
+      gutter($aether-gutter-width, half)
+    );
+  }
+}
+
+@mixin grid-classes(
+  $rtl: ltr,
+  $default: false,
+  $aether-media:$aether-media,
+  $columns:$aether-columns,
+  $grid-width:$aether-grid-width
+) {
+  @if $rtl == ltr { // If rtl these classes aren't included.
+    // Generate column classes.
+    @for $n from 1 through $columns {
+      .g-#{$aether-media}-#{$n} {
+        @include span-columns($n,$aether-columns);
+      }
+    }
+
+    .#{$aether-gridprefix}-#{$aether-media}-center {
+      margin-left: auto;
+      margin-right: auto;
+      @include reset-float();
+    }
+
+    .#{$aether-gridprefix}-#{$aether-media}-center-text {
+      text-align: center;
+      @include reset-float();
+    }
+
+    .#{$aether-gridprefix}-#{$aether-media}-clear {
+      clear: both;
+    }
+
+    .#{$aether-gridprefix}-#{$aether-media}-#{$aether-columns} {
+      @extend .#{$aether-gridprefix}-#{$aether-media}-clear;
+    }
+
+  }
+
+  // generate offset classes
+  @for $n from 1 through ($columns - 1) {
+    .g-#{$aether-media}-#{$aether-offset_prefix}#{$n} {
+      @include offset($n,$aether-columns);
+    }
+  }
+
+  // generate push classes
+  @for $n from 1 through ($columns - 1) {
+    .g-#{$aether-media}-#{$aether-push_prefix}#{$n} {
+      @include push($n,$aether-columns);
+    }
+  }
+
+  // generate pull classes
+  @for $n from 1 through ($columns - 1) {
+    .g-#{$aether-media}-#{$aether-pull_prefix}#{$n} {
+      @include pull($n,$aether-columns);
+    }
+  }
+
+  .#{$aether-gridprefix}-#{$aether-media}-right {
+    // Determine the float direction.
+    $dir: right;
+    @if $aether-float-direction == right {
+      $dir: aether-reverse-dir($dir);
+    }
+    @include float($dir);
+  }
+
+  .#{$aether-gridprefix}-#{$aether-media}-left {
+    // Determine the float direction.
+    $dir: left;
+    @if $aether-float-direction == right {
+      $dir: aether-reverse-dir($dir);
+    }
+    @include float($dir);
+  }
+
+  .#{$aether-gridprefix}-#{$aether-media}-f {
+    @include aether-clear(left);
+  }
+
+  .#{$aether-gridprefix}-#{$aether-media}-l {
+    @include aether-clear(right);
+  }
+
+  @if $default == default {
+    .#{$aether-gridprefix}-all-f {
+      @extend .#{$aether-gridprefix}-#{$aether-media}-f;
+    }
+
+    .#{$aether-gridprefix}-all-l {
+      @extend .#{$aether-gridprefix}-#{$aether-media}-l;
+    }
+
+    .#{$aether-gridprefix}-all-clear {
+      @extend .#{$aether-gridprefix}-#{$aether-media}-clear;
+    }
+
+    .#{$aether-gridprefix}-all-right {
+      @extend .#{$aether-gridprefix}-#{$aether-media}-right;
+    }
+
+    .#{$aether-gridprefix}-all-left {
+      @extend .#{$aether-gridprefix}-#{$aether-media}-right;
+    }
+
+    .#{$aether-gridprefix}-all-center {
+      @extend .#{$aether-gridprefix}-#{$aether-media}-center;
+    }
+
+    .#{$aether-gridprefix}-all-center-text {
+      @extend .#{$aether-gridprefix}-#{$aether-media}-center-text;
+    }
+
+  }
+
+}
+
+// Aether's method of clearing, it is used for first/last classes.
+@mixin aether-clear (
+  $float-direction: $aether-float-direction
+) {
+  // Determine the float direction.
+  $dir: $float-direction;
+  @if $aether-float-direction == right {
+    $dir: aether-reverse-dir($dir);
+  }
+  clear: $dir;
+}
+
+// Returns the opposite direction, given "left" or "right".
+@function aether-reverse-dir($dir) {
+  @if $dir == left {
+    @return right;
+  }
+  @else if $dir == right {
+    @return left;
+  }
+  @else if $dir == none or $dir == both {
+    @return $dir;
+  }
+  @warn "Invalid direction passed to aether-reverse-dir().";
+  @return both;
+}
+
+// Zero out desktop push/pull/offset to avoid specificity problems 
+// in the media class stack when moving things like sidebars around.
+// This must come before column classes.
+@mixin zero-classes($media:$aether-media,$columns: $aether-columns) {
+
+  #{enumerate(".#{$aether-gridprefix}-#{$media}-#{$aether-offset_prefix}", 1, $columns, "")} {
+    margin: {
+      @if $aether-float-direction == right {
+        right: 0;
+      }
+      @else {
+        left: 0;
+      }
+    }
+  }
+
+  #{enumerate(".#{$aether-gridprefix}-#{$media}-#{$aether-push_prefix}", 1, $columns, "")} {
+    margin: {
+      left: gutter($aether-gutter-width, half);
+      right: gutter($aether-gutter-width, half);
+    }
+  }
+
+  #{enumerate(".#{$aether-gridprefix}-#{$media}-#{$aether-pull_prefix}", 1, $columns, "")} {
+    margin: {
+      @if $aether-float-direction == right {
+        right: gutter($aether-gutter-width, half);
+      }
+      @else {
+        left: gutter($aether-gutter-width, half);
+      }
+    }
+  }
+
+  #{enumerate(".#{$aether-gridprefix}-#{$media}", 1, $columns)} {
+    width: auto;
+  }
+
+  .#{$aether-gridprefix}-#{$media}-right {
+    @include reset-float();
+  }
+
+  .#{$aether-gridprefix}-#{$media}-#{$columns},
+  .#{$aether-gridprefix}-#{$media}-f,
+  .#{$aether-gridprefix}-#{$media}-l,
+  .#{$aether-gridprefix}-#{$media}-clear {
+    clear: none;
+  }
+
+}

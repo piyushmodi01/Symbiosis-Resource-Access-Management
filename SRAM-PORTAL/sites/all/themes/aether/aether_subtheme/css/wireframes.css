@@ -1,0 +1,42 @@
+/**
+ * @file
+ * Wireframes Styling
+ *
+ * Add wireframes to the basic layout elements.
+ */
+
+.with-wireframes .user-columns-wrapper,
+.with-wireframes .branding-wrapper,
+.with-wireframes .header-columns-wrapper,
+.with-wireframes .main-menu-wrapper,
+.with-wireframes .navigation-columns-wrapper,
+.with-wireframes .feature-wrapper,
+.with-wireframes .preface-wrapper,
+.with-wireframes .content-wrapper,
+.with-wireframes .postscript-wrapper,
+.with-wireframes .footer-columns-wrapper,
+.with-wireframes .footer-wrapper {
+  border: 1px solid #ddd;
+}
+
+.with-wireframes .limiter {
+  border: 1px solid #ccc;
+}
+
+.with-wireframes .user-inner,
+.with-wireframes .header-inner,
+.with-wireframes .branding-inner,
+.with-wireframes .main-menu-inner,
+.with-wireframes .navigation-inner,
+.with-wireframes .preface-inner,
+.with-wireframes .feature-inner,
+.with-wireframes .content-inner,
+.with-wireframes .postscript-inner,
+.with-wireframes .sidebar-inner,
+.with-wireframes .footer-inner {
+  border: 1px solid #666;
+}
+
+.with-wireframes .block {
+  border: 1px solid #aaa;
+}

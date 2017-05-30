@@ -1,0 +1,19 @@
+// Import your base variables here to set vertical rhythm and for overrides.
+@import '../base';
+// Import Aether-grids utilities.
+@import 'aether-grids/layout/grid-utilities';
+// This is the layout-extends stylesheet. Example usage is commented out.
+
+#main {
+  @extend .g-all-row;
+}
+
+#content {
+  @include extend-layout(d 8, tl 8, t 8, hl 6, h 12);
+}
+#aside1 {
+  @include extend-layout(d 4, tl 4, t 4 right, hl 6, h 12);
+}
+#aside2 {
+  @include extend-layout(d 4 right, tl 4 right, t 8, hl 12, h 12);
+}

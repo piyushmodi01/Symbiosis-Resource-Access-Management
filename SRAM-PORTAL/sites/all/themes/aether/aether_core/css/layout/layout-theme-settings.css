@@ -1,0 +1,170 @@
+.sidebar-layout:not(#foo) > .form-item {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+}
+.sidebar-layout:not(#foo) > .form-item {
+  *display: inline;
+}
+.sidebar-layout:not(#foo) > .form-item label {
+  text-indent: 110%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sidebar-layout:not(#foo) > .form-item label,
+.sidebar-layout:not(#foo) > .form-item input[type='radio']:checked + label {
+  background-repeat: no-repeat;
+  background-image: url('../../images/layouts-sidebar.png');
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(1) label {
+  background-position: -5px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(1) input[type='radio']:checked + label {
+  background-position: -5px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(2) label {
+  background-position: -97px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(2) input[type='radio']:checked + label {
+  background-position: -97px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(3) label {
+  background-position: -188px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(3) input[type='radio']:checked + label {
+  background-position: -188px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(4) label {
+  background-position: -281px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(4) input[type='radio']:checked + label {
+  background-position: -281px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(5) label {
+  background-position: -373px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(5) input[type='radio']:checked + label {
+  background-position: -373px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(6) label {
+  background-position: -462px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(6) input[type='radio']:checked + label {
+  background-position: -462px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(7) label {
+  background-position: -553px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(7) input[type='radio']:checked + label {
+  background-position: -553px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(8) label {
+  background-position: -645px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(8) input[type='radio']:checked + label {
+  background-position: -645px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(9) label {
+  background-position: -735px 0;
+}
+.sidebar-layout:not(#foo) > .form-item:nth-child(9) input[type='radio']:checked + label {
+  background-position: -735px -88px;
+}
+.sidebar-layout:not(#foo) > .form-item:not(#foo) > input[type='radio'] {
+  display: none;
+}
+.sidebar-layout:not(#foo) > .form-item:not(#foo) > input[type='radio'] + label {
+  height: 90px;
+  width: 90px;
+  margin-right: 3px;
+  cursor: pointer;
+  display: block;
+}
+
+.ui-tabs .ui-tabs-nav li {
+  text-indent: 110%;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: 0;
+  padding-right: 3px;
+}
+.ui-tabs .ui-tabs-nav li a {
+  height: 100px;
+  width: 100px;
+  display: block;
+  border-radius: 0;
+}
+.ui-tabs .ui-tabs-nav li a, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+  background-image: url('../../images/layouts-device.png');
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+.ui-tabs .ui-tabs-nav li .device-1 {
+  background-position: 0 0;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected .device-1 {
+  background-position: 0 -101px;
+}
+.ui-tabs .ui-tabs-nav li .device-2 {
+  background-position: -115px 0;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected .device-2 {
+  background-position: -115px -101px;
+}
+.ui-tabs .ui-tabs-nav li .device-3 {
+  background-position: -225px 0;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected .device-3 {
+  background-position: -225px -101px;
+}
+.ui-tabs .ui-tabs-nav li .device-4 {
+  background-position: -337px 0;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected .device-4 {
+  background-position: -337px -101px;
+}
+.ui-tabs .ui-tabs-nav li .device-5 {
+  background-position: -455px 0;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected .device-5 {
+  background-position: -455px -101px;
+}
+
+/* Reposition layout options to top of tabs, not ideal but necessary */
+.form-item-layout-options {
+  position: absolute;
+  top: 0;
+  height: 130px;
+  overflow: hidden;
+}
+
+/* Reposition tabs under layout options */
+.ui-tabs .ui-tabs-nav {
+  padding-top: 150px;
+}
+
+.ui-tabs .ui-tabs-panel {
+  padding: 0.5em 0;
+}
+
+.block-system .contextual-links-wrapper {
+  display: none!important;
+}
+
+.page-admin-appearance-settings #content .content-inner {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+.page-admin-appearance-settings .main form {
+  position: relative;
+  z-index: 5;
+}
+
+.region-sidebar-second,
+.region-sidebar-first,
+#block-system-help {
+  display: none;
+}

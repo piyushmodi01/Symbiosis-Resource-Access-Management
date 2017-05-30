@@ -1,0 +1,29 @@
+html { overflow: auto; overflow-x: hidden; }
+
+.page { margin-left: auto; margin-right: auto; width: 1148px; }
+
+.main { margin-left: 10px; margin-right: 10px; }
+.main:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+.ie6 .main { height: 1%; }
+.ie7 .main { min-height: 1%; }
+.main .block1 { margin-left: 10px; margin-right: 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; display: inline; float: left; width: 1108px; }
+.main .block2 { margin-left: 10px; margin-right: 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; display: inline; float: left; width: 732px; }
+.main .block2 .nestedrow { margin-left: -10px; margin-right: -10px; }
+.main .block2 .nestedrow:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+.ie6 .main .block2 .nestedrow { height: 1%; }
+.ie7 .main .block2 .nestedrow { min-height: 1%; }
+.main .block2 .nestedrow .block2-1 { margin-left: 10px; margin-right: 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; display: inline; float: left; width: 356px; }
+.main .block2 .nestedrow .block2-2 { margin-left: 10px; margin-right: 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; display: inline; float: left; width: 356px; }
+.main .block3 { margin-left: 10px; margin-right: 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; display: inline; float: left; width: 356px; }
+
+#postscript { margin-left: 10px; margin-right: 10px; }
+#postscript:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+.ie6 #postscript { height: 1%; }
+.ie7 #postscript { min-height: 1%; }
+#postscript .block1, #postscript .block2, #postscript .block3 { margin-left: 10px; margin-right: 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; display: inline; float: left; width: 356px; }
+
+footer { margin-left: 10px; margin-right: 10px; }
+footer:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+.ie6 footer { height: 1%; }
+.ie7 footer { min-height: 1%; }
+footer p { margin-left: 10px; margin-right: 10px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-background-clip: padding; -moz-background-clip: padding; background-clip: padding-box; display: inline; float: left; width: 1108px; }

@@ -1,0 +1,171 @@
+/*
+ * Media Visibility
+ */
+
+/* These classes make it possible to display elements in only certain medias */
+.desktop-visible,
+.below-desktop-visible,
+.tablet-landscape-visible,
+.below-tablet-landscape-visible,
+.tablet-visible,
+.below-tablet-visible,
+.tablet-all-visible,
+.handheld-landscape-visible,
+.handheld-visible {
+  display: none;
+}
+
+/* Only handheld portrait */
+@include respond-to(handheld) {
+  .desktop-visible,
+  .tablet-visible,
+  .tablet-landscape-visible,
+  .handheld-landscape-visible {
+    display: none !important;
+  }
+  .handheld-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.handheld-visible {
+      display: inline !important;
+    }
+  }
+}
+
+/* Only handheld landscape */
+@include respond-to(handheld-landscape) {
+  .desktop-visible,
+  .tablet-visible,
+  .tablet-landscape-visible,
+  .handheld-visible {
+    display: none !important;
+  }
+  .handheld-landscape-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.handheld-landscape-visible {
+      display: inline !important;
+    }
+  }
+}
+
+/* Only tablet portrait */
+@include respond-to(tablet) {
+  .desktop-visible,
+  .tablet-landscape-visible,
+  .handheld-landscape-visible,
+  .handheld-visible {
+    display: none !important;
+  }
+  .tablet-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.tablet-visible {
+      display: inline !important;
+    }
+  }
+}
+
+/* Only handhelds */
+@include respond-below(tablet) {
+  .desktop-visible,
+  .tablet-landscape-visible,
+  .tablet-visible {
+    display: none !important;
+  }
+  .below-tablet-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.below-tablet-visible {
+      display: inline !important;
+    }
+  }
+}
+
+/* Only tablet landscape */
+@include respond-to(tablet-landscape) {
+  .desktop-visible,
+  .tablet-visible,
+  .handheld-landscape-visible,
+  .handheld-visible {
+    display: none !important;
+  }
+  .tablet-landscape-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.tablet-landscape-visible {
+      display: inline !important;
+    }
+  }
+}
+
+/* Only tablet portrait and below */
+@include respond-below(tablet-landscape) {
+  .desktop-visible,
+  .tablet-landscape-visible {
+    display: none !important;
+  }
+  .below-tablet-landscape-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.below-tablet-landscape-visible {
+      display: inline !important;
+    }
+  }
+}
+
+/* Only tablets */
+@include respond-to(tablet-all) {
+  .desktop-visible,
+  .handheld-landscape-visible,
+  .handheld-visible {
+    display: none !important;
+  }
+  .tablet-all-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.tablet-all-visible {
+      display: inline !important;
+    }
+  }
+}
+
+/* Only widescreens */
+@include respond-to(desktop) {
+  .tablet-visible,
+  .tablet-landscape-visible,
+  .handheld-landscape-visible,
+  .handheld-visible {
+    display: none !important;
+  }
+  .desktop-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.desktop-visible {
+      display: inline !important;
+    }
+  }
+}
+
+/* Only below widescreens */
+@include respond-below(desktop) {
+  .desktop-visible {
+    display: none !important;
+  }
+  .below-desktop-visible {
+    display: block !important;
+  }
+  #{elements-of-type(inline)} {
+    &.below-desktop-visible {
+      display: inline !important;
+    }
+  }
+}

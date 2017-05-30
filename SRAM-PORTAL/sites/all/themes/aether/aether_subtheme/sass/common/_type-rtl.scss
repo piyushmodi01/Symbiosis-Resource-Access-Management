@@ -1,0 +1,16 @@
+/* Type */
+
+blockquote {
+  border-left: 0;
+  border-right: 1px solid $text-border;
+  padding-left: 0;
+  padding-right: $typographic-indent;
+}
+
+// Description Lists
+dl {
+  dd {
+    margin-left: 0;
+    margin-right: $typographic-indent / 2;
+  }
+}

@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function drupalgap_uninstall() {
+  variable_del('drupalgap_sdk_dir');
+  variable_del('drupalgap_sdk_installed');
+}
+
+/**
+ * Enable the drupalgap_date module if the site has the date module enabled.
+ */
+function drupalgap_update_7100(&$sandbox) {
+  if (module_exists('date')) {
+    if (!module_exists('drupalgap_date')) {
+      module_enable(array('drupalgap_date'));
+    }
+  }
+}

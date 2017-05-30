@@ -1,0 +1,194 @@
+/*
+ * Tables
+ */
+
+//
+// Local mixins are documented here, the rest are Compass mixins.
+// Look here for the Compass mixin docs http://compass-style.org/index/mixins/
+//
+
+/* Baseline Styles */
+
+table { // See type.scss for vertical rhythm
+  border-collapse: collapse;
+  @include margin-trailer(1, $font-size-normal);
+  padding: 0;
+  width: 100%;
+  th,
+  td {
+    padding-left: 0.692em;
+    padding-right: 0.692em;
+    text-align: left;
+  }
+  th {
+    @include apply-side-rhythm-border(bottom, 1px, 0.5, $font-size-normal, solid);
+    @include padding-leader(0.5, $font-size-normal);
+    border-color: #ccc;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+  td {
+    @include apply-side-rhythm-border(top, 1px, 0.5, $font-size-normal, solid);
+    @include padding-trailer(0.5, $font-size-normal);
+    border-color: #ddd;
+    vertical-align: top;
+  }
+  // When scoped to row, fix th in tbody
+  tbody th {
+    @include apply-side-rhythm-border(top, 1px, 0.5, $font-size-normal, solid);
+    border-color: #ddd;
+    vertical-align: top;
+  }
+  tr.even,
+  tr.odd {
+    background-color: transparent;
+  }
+}
+
+.condensed-table {
+  td {
+    @include apply-side-rhythm-border(top, 1px, 0.25, $font-size-normal, solid);
+    @include padding-trailer(0.25, $font-size-normal);
+  }
+  th {
+    @include apply-side-rhythm-border(bottom, 1px, 0.25, $font-size-normal, solid);
+    @include padding-leader(0.25, $font-size-normal);
+  }
+  tbody th {
+    @include apply-side-rhythm-border(top, 1px, 0.25, $font-size-normal, solid);
+  }
+}
+
+/* Responsive Tables */
+// Derived from Zurb's responsive tables https://github.com/zurb/responsive-tables
+
+@include respond-below(tablet) {
+  
+  table.responsive {
+    margin-bottom: 0;
+  }
+  
+  .pinned {
+    background: #fff;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    left: 0;
+    overflow: hidden;
+    overflow-x: scroll;
+    position: absolute;
+    top: 0;
+    width: 35%;
+  }
+
+  .pinned table {
+    border-left: none;
+    border-right: none;
+    width: 100%;
+  }
+
+  .pinned table th,
+  .pinned table td {
+    white-space: nowrap;
+  }
+
+  .pinned td:last-child {
+    border-bottom: 0;
+  }
+  
+  div.table-wrapper {
+    border-right: 1px solid #ccc;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  div.table-wrapper div.scrollable table {
+    margin-left: 35%;
+  }
+
+  div.table-wrapper div.scrollable {
+    overflow: scroll;
+    overflow-y: hidden;
+  }  
+  
+  table.responsive td,
+  table.responsive th {
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  table.responsive th:first-child,
+  table.responsive td:first-child,
+  table.responsive td:first-child,
+  table.responsive.pinned td {
+    display: none;
+  }
+
+}
+
+/* Bordered-table */
+// Derived from twitter bootstrap
+
+.bordered-table {
+  border: 1px solid #ddd;
+  // required to round corners
+  border-collapse: separate;
+  // fixes firefox spacing bug introduced by border-collapse: seperate;
+  border-spacing: 0;
+  @include border-radius(4px);
+  th + th,
+  td + td,
+  th + td {
+    border-left: 1px solid #ddd;
+  }
+  thead tr:first-child th:first-child,
+  tbody tr:first-child td:first-child {
+    @include border-radius(4px 0 0 0);
+  }
+  thead tr:first-child th:last-child,
+  tbody tr:first-child td:last-child {
+    @include border-radius(0 4px 0 0);
+  }
+  tbody tr:last-child td:first-child {
+    @include border-radius(0 0 0 4px);
+  }
+  tbody tr:last-child td:last-child {
+    @include border-radius(0 0 4px 0);
+  }
+  th {
+    border-bottom: 0;
+  }
+}
+
+// IE7
+@if $legacy-support-for-ie7 {
+  .ie7 .bordered-table {
+    /* IE7, collapse table to remove spacing */
+    border-collapse: collapse;
+  }
+}
+
+/* Zebra table */
+// Derived from twitter bootstrap
+
+// Default zebra-stripe styles
+.zebra-striped {
+  tbody {
+    tr:nth-child(even),
+    tr.even {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+  }
+}
+
+.draggable a.tabledrag-handle {
+  @include rhythm(0, 0, 0, 0, $font-size-normal);
+  .handle {
+    @include margin-leader(0.2, $font-size-normal);
+    @include margin-trailer(0.2, $font-size-normal);
+  }
+}

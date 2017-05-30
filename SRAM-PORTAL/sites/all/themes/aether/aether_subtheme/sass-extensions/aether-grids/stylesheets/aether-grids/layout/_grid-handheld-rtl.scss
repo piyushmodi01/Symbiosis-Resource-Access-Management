@@ -1,0 +1,17 @@
+@import '../base';
+
+$aether-float-direction: right;
+$aether-grid-type: $aether-grid-type-handheld;
+$aether-columns: $aether-columns-handheld;
+$aether-grid-width: $aether-grid-width-handheld;
+$aether-media: $aether-media-handheld;
+
+/* Handheld Portrait */
+@include respond-to(handheld) {
+
+  @include zero-classes($aether-media-desktop,$aether-columns-desktop);
+
+  // Generate column classes for handheld landscape media
+  @include grid-classes(rtl);
+
+}

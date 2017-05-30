@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Implements hook_services_request_postprocess_alter().
+ */
+function drupalgap_og_services_request_postprocess_alter($controller, $args, &$result) {
+
+  // Upon system connect, if the og_access module is enabled, grab the current
+  // user's memberships, then for each group(s) they are a member of check for
+  // permission to "create [content-type] content" and append it to the result's
+  // user permissions array if they have permission. This helps DrupalGap's
+  // user_access better report permissions to create content.
+  if ($controller['callback'] == '_system_resource_connect' && module_exists('og_access')) {
+    global $user;
+    module_load_include('inc', 'og_services', 'og_services.resource');
+    $memberships = _og_services_resource_user_memberships(
+      $user->uid, 0, '*', array(), variable_get('services_user_index_page_size', 20)
+    );
+    if (!empty($memberships)) {
+      $content_types = node_type_get_names();
+      foreach ($memberships as $membership) {
+        if ($membership->state != 1) { continue; }
+        foreach ($content_types as $bundle => $label) {
+          if ($membership->group_type != 'node') { continue; }
+          $bundle = str_replace('_', ' ', $bundle);
+          $permission = "create {$bundle} content";
+          if (og_user_access($membership->group_type, $membership->gid, $permission)) {
+            $perm = new stdClass();
+            $perm->module = 'og';
+            $perm->permission = $permission;
+            $result->user_permissions[] = $perm;
+          }
+        }
+      }
+    }
+  }
+
+}

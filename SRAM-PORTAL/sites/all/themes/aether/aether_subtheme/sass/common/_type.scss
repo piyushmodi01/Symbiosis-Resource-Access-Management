@@ -1,0 +1,249 @@
+/*
+ * Type
+ */
+
+//
+// Local mixins are documented here, the rest are Compass mixins.
+// Look here for the Compass mixin docs http://compass-style.org/index/mixins/
+//
+
+// Vertical Rhythm
+$base-line-height: 18px !default;
+$base-font-size: 13px !default;
+$relative-font-sizing: true !default; // output px instead of em's. cuz em's are annoying.
+$base-em-ratio: 1em / $base-font-size !default; // used by the px-to-em function below
+
+$show-grid-backgrounds: false !default;
+
+// Font size constants
+$font-size-xxs: 10px !default;
+$font-size-xs: 11px !default;
+$font-size-sm: 12px !default;
+$font-size-normal: $base-font-size !default;
+$font-size-md: 14px !default;
+$font-size-lg: 18px !default;
+$font-size-xl: 20px !default;
+$font-size-xxl: 24px !default;
+$font-size-xxxl: 30px !default;
+
+// Converts px to em in case you do need relative units in your output.
+@function px-to-em($value, $em-ratio: $base-em-ratio) {
+  @return $value * $em-ratio;
+}
+
+// Vertical Rhythm borders
+$typographic-indent: 1.625em !default;
+
+// Font Stacks
+$header-font-family: Palatino, "Helvetica Neue",Helvetica,Arial,sans-serif !default;
+$text-font-family: "Helvetica Neue", "Helvetica", Arial, "Liberation Sans", FreeSans, sans-serif !default;
+$mono-font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+
+@include establish-baseline($base-font-size);
+
+/* Headings/small */
+
+// Font sizes are based on the golden ratio of 16
+// See this for the modular scale: ow.ly/5jGl6
+// Line-heights and margins are adjusted to keep a 26px (1.625em) vertical rhythm across elements
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font-family;
+  font-size: px-to-em($base-font-size);
+  font-weight: bold;
+}
+
+h1 {
+  @include adjust-font-size-to($font-size-xxxl,2);
+  @include margin-leader(0, $font-size-xxxl);
+  @include margin-trailer(1, $font-size-xxxl);
+}
+
+h2 {
+  @include adjust-font-size-to($font-size-xxl,2);
+  @include margin-leader(0, $font-size-xxl);
+  @include margin-trailer(1, $font-size-xxl);
+}
+
+h3 {
+  @include adjust-font-size-to($font-size-xl,1);
+  @include margin-leader(0, $font-size-xl);
+  @include margin-trailer(1, $font-size-xl);
+}
+
+h4 {
+  @include adjust-font-size-to($font-size-lg,1);
+  @include margin-leader(0, $font-size-lg);
+  @include margin-trailer(1, $font-size-lg);
+}
+
+h5 {
+  @include adjust-font-size-to($font-size-md,1);
+  @include margin-leader(0, $font-size-md);
+  @include margin-trailer(1, $font-size-md);
+}
+
+h6 {
+  @include adjust-font-size-to($font-size-md,1);
+  @include margin-leader(0, $font-size-md);
+  @include margin-trailer(1, $font-size-md);
+  color: $text-color-light;
+}
+
+small {
+  @include margin-leader(0, $font-size-xxs);
+  @include margin-trailer(1, $font-size-xxs);
+  font-size: px-to-em($font-size-xxs);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  small {
+    color: $text-color-light;
+  }
+}
+
+/* Abbreviations */
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+// Position 'sub' and 'sup' without affecting line-height: gist.github.com/413930
+
+sub {
+  @include adjust-font-size-to($font-size-xxs,0);
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  @include adjust-font-size-to($font-size-xxs,0);
+  position: relative;
+  top: -0.5em;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid $text-border;
+  display: block;
+  height: 1px;
+}
+
+/* Figures */
+
+figure {
+  margin: 0;
+}
+
+// Preformatted text and code
+
+// Allows line wrapping of 'pre'
+
+pre {
+  @include adjust-font-size-to($font-size-normal,1);
+  font-family: $mono-font-family;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+code,
+kbd,
+samp {
+  @include adjust-font-size-to($font-size-normal,0.9);
+  font-family: $mono-font-family;
+}
+
+/* Quotes */
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote,
+q,
+cite {
+  font-style: italic;
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+blockquote {
+  border-left: 1px solid $text-border;
+  padding-left: $typographic-indent;
+  padding-right: 20px;
+  > p {
+    padding: 0;
+  }
+}
+
+/* Description Lists */
+dl {
+  @include margin-trailer(1, $base-font-size);
+  dt,
+  dd {
+    line-height: px-to-em($base-line-height);
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin-left: $typographic-indent / 2;
+  }
+}
+
+/* Marked/inserted/deleted text */
+
+mark {
+  background: $text-marked;
+}
+
+ins {
+  background: $text-inserted;
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+/* Others */
+
+strong,
+b,
+dt {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+var,
+address {
+  font-style: normal;
+}

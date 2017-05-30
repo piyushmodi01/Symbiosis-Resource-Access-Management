@@ -1,0 +1,26 @@
+@import '../base';
+
+$aether-grid-type: $aether-grid-type-tablet-landscape;
+$aether-columns: $aether-columns-tablet;
+$aether-grid-width: $aether-grid-width-tablet-landscape;
+$aether-media: $aether-media-tablet-landscape;
+
+/* Tablet Landscape */
+@include respond-to(tablet-landscape) {
+
+@include limiter;
+
+  .#{$aether-gridprefix}-all-row {
+    @include container(full);
+    @include aether-grid-background;
+  }
+
+  // Zero out desktop push/pull/offset to avoid specificity problems 
+  // in the media class stack when moving things like sidebars around.
+  // This must come before column classes.
+  @include zero-classes($aether-media-desktop,$aether-columns-desktop);
+
+  // Generate column classes for tablet media
+  @include grid-classes(ltr);
+
+}

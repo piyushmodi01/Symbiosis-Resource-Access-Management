@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sign_up"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#303030"
+    tools:context="in.ac.sicsr.sram.SignUpActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageViewLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_above="@+id/editTextUsername"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:cropToPadding="false"
+                    android:src="@drawable/my_logo" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.7"
+                    android:orientation="vertical">
+
+
+                    <EditText
+                        android:id="@+id/editTextPRN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/editTextUsername"
+                        android:layout_alignEnd="@+id/editTextUsername"
+                        android:layout_alignLeft="@+id/editTextUsername"
+                        android:layout_alignRight="@+id/editTextUsername"
+                        android:layout_alignStart="@+id/editTextUsername"
+                        android:layout_marginBottom="2dp"
+                        android:background="#ffffff"
+                        android:ems="10"
+                        android:focusable="true"
+                        android:fontFamily="Roboto"
+                        android:hint="PRN"
+                        android:inputType="textCapWords"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/editTextName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/editTextPassword"
+                        android:layout_alignEnd="@+id/editTextPassword"
+                        android:layout_alignLeft="@+id/editTextPassword"
+                        android:layout_alignRight="@+id/editTextPassword"
+                        android:layout_alignStart="@+id/editTextPassword"
+                        android:layout_marginBottom="2dp"
+                        android:background="#ffffff"
+                        android:ems="10"
+                        android:focusable="true"
+                        android:fontFamily="Roboto"
+                        android:hint="Name"
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:padding="8dp"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/editTextPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:background="#ffffff"
+                        android:fontFamily="Roboto"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:padding="8dp"
+                        android:textSize="20sp" />
+
+
+                    <Button
+                        android:id="@+id/buttonSignIn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="#1487d4"
+                        android:fontFamily="Roboto"
+                        android:padding="16dp"
+                        android:text="SIGN UP"
+                        android:onClick="doSignUpHere"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:textSize="18sp"
+                        android:text="Already have an Account? Sign In."
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:onClick="gotoSignInPage"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

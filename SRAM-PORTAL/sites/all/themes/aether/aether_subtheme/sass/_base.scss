@@ -1,0 +1,137 @@
+// Legacy IE support
+$legacy-support-for-ie6: true;
+$legacy-support-for-ie7: true;
+
+// Vertical Rhythm
+$base-line-height:             18px;
+$base-font-size:               13px;
+$relative-font-sizing:         true; // output px instead of em's. cuz em's are annoying.
+$base-em-ratio:                1em / $base-font-size;
+
+// Font size constants
+$font-size-xxs:                10px;
+$font-size-xs:                 11px;
+$font-size-sm:                 12px;
+$font-size-normal:             $base-font-size;
+$font-size-md:                 14px;
+$font-size-lg:                 16px;
+$font-size-xl:                 18px;
+$font-size-xxl:                24px;
+$font-size-xxxl:               30px;
+
+// Vertical Rhythm borders
+$typographic-indent:           1.625em;
+
+// Font Stacks
+$header-font-family:           "Helvetica Neue", "Helvetica", Arial, "Liberation Sans", FreeSans, sans-serif;
+$text-font-family:             "Helvetica Neue", "Helvetica", Arial, "Liberation Sans", FreeSans, sans-serif;
+$button-font-family:           "Helvetica Neue", "Helvetica", Arial, "Liberation Sans", FreeSans, sans-serif;
+$input-font-family:            Arial, "Liberation Sans", FreeSans, sans-serif;
+$mono-font-family:             Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
+
+// Main Link Colors
+$link-color:                   #06c;
+$link-color-hover:             adjust-color($link-color, $lightness: 12, $saturation: 25);
+$link-color-visited:           $link-color;
+$link-color-active:            adjust-color($link-color-hover, $lightness: -15);
+
+// Alternative Link Colors
+$link-color-alt:               #888;
+$link-color-hover-alt:         adjust-color($link-color-alt, $lightness: -10);
+$link-color-visited-alt:       $link-color-alt;
+$link-color-active-alt:        adjust-color($link-color-hover-alt, $lightness: -15);
+
+// Text Colors
+$text-color:                   #222;
+$text-color-light:             adjust-color($text-color, $lightness: 54);
+$text-border:                  #ddd;
+$text-border-alt:              adjust-lightness($text-border, -14);
+$text-border-alt-2:            adjust-lightness($text-border, -27);
+$text-marked:                  #ff0;
+$text-inserted:                adjust-color($text-marked, $lightness: 30);
+
+// Button colors
+$button-background:            #ddd;
+$button-border-1:              $button-background;
+$button-border-2:              adjust-lightness($button-border-1, -14);
+$button-border-3:              adjust-lightness($button-border-1, -27);
+$button-color-1:               #fff;
+$button-color-2:               adjust-lightness($button-color-1, -6);
+$button-color-3:               adjust-lightness($button-color-1, -13);
+$button-color-hover-1:         #fff;
+$button-color-hover-2:         adjust-lightness($button-color-hover-1, -13);
+$button-color-hover-3:         adjust-lightness($button-color-hover-1, -20);
+$button-color-active-1:        #fff;
+$button-color-active-2:        adjust-lightness($button-color-active-1, -13);
+$button-color-active-3:        adjust-lightness($button-color-active-1, -7);
+
+// Form input colors
+$form-border-1:                #848484;
+$form-border-2:                adjust-lightness($form-border-1, 24);
+$form-border-3:                adjust-lightness($form-border-1, 36);
+$form-disabled:                #888888;
+
+// This is used to limit and center the width of the page
+// Uncomment to override default class if you modified page.tpl.php
+// $aether-limiter-class:                ".limiter";
+
+// Either use a fluid, fixed or hybrid layout
+$aether-grid-type-desktop:            fixed;
+$aether-grid-type-tablet-landscape:   fixed;
+$aether-grid-type-tablet:             fixed;
+$aether-grid-type-handheld-landscape: fixed;
+$aether-grid-type-handheld:           fixed;
+
+// Used by aether-grid/mediaqueries and aether-grid/visibility.
+// Media Query Breakpoints, also used to create margins in fluid mode. 
+$aether-break-wide:                   1160px;
+$aether-break-large:                  980px;
+$aether-break-medium:                 768px;
+$aether-break-small:                  480px;
+$aether-break-smallest:               400px; // Only used in fluid mode to create a margin on handhelds.
+
+// Fixed Width Layouts
+$aether-grid-width-desktop:           1148px; // http://gridcalculator.dk/#/1148/12/20/20
+$aether-grid-width-tablet-landscape:  968px; // http://gridcalculator.dk/#/968/12/20/20
+$aether-grid-width-tablet:            752px; // http://gridcalculator.dk/#/752/12/20/20
+$aether-grid-width-handheld-landscape:428px; // http://gridcalculator.dk/#/428/12/20/20
+$aether-grid-width-handheld:          308px; // http://gridcalculator.dk/#/308/12/20/20
+
+// Used by aether-grid/debug, aether-grid/default-layout, aether-grid/mediaquery-layout.
+// Grid overlay
+$aether-show-grid-background:         false;
+$show-column-grid-backgrounds:        true;
+$grid-background-column-color:        hsl(0, 68%, 96%);
+$show-baseline-grid-backgrounds:      true;
+$grid-background-baseline-color:      hsl(0, 0%, 87%);
+
+// Vertical Rhythm
+$aether-base-line-height:             18px;
+$aether-base-font-size:               13px;
+
+// Configuration
+$aether-columns-desktop:              12; // The number of columns in your large grid.
+$aether-columns-tablet:               12; // The number of tablet columns in your medium grid.
+$aether-columns-handheld:             12; // The number of columns in your small grid.
+$aether-gutter-width:                 20px; // Fixed gutters across all grids.
+$aether-column-padding-h:             0; // Left right column padding across all grids.
+$aether-column-padding-v:             0; // Upper lower padding across all grids, usually 0.
+
+// Float direction
+$aether-float-direction:              left;
+
+// Box model
+$aether-box-sizing:                   border-box;
+
+// Import Compass mixins
+@import "compass/css3";
+@import "compass/support"; // Add Compass' IE and vendor prefix support variables.
+@import "compass/typography";
+@import "compass/utilities";
+
+// Import base utilities which create no code unless used.
+@import 'base/utilities';
+
+// Import base mixins which create no code unless used.
+@import 'base/mixin-boxbg';
+@import 'base/mixin-pill'; // used in aether tabs.

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_select_semester_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#303030"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="in.ac.sicsr.sram.selectSemesterPage"
+    tools:showIn="@layout/app_bar_select_semester_page">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/one"
+                android:layout_margin="70dp"
+                android:onClick="gotoSem1"
+                android:id="@+id/imgSem1"
+                android:padding="25dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:onClick="gotoSem2"
+                android:layout_height="300dp"
+                android:src="@drawable/two"
+                android:layout_margin="70dp"
+                android:padding="25dp"
+                android:id="@+id/imgSem2"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:onClick="gotoSem3"
+                android:layout_margin="70dp"
+                android:padding="25dp"
+                android:src="@drawable/three"
+                android:id="@+id/imgSem3"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:onClick="gotoSem4"
+                android:src="@drawable/four"
+                android:padding="25dp"
+                android:layout_margin="70dp"
+                android:id="@+id/imgSem4"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:onClick="gotoSem5"
+                android:padding="25dp"
+                android:src="@drawable/five"
+                android:id="@+id/imgSem5"
+                android:layout_margin="70dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:onClick="gotoSem6"
+                android:src="@drawable/six"
+                android:id="@+id/imgSem6"
+                android:padding="25dp"
+                android:layout_margin="70dp"
+               />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

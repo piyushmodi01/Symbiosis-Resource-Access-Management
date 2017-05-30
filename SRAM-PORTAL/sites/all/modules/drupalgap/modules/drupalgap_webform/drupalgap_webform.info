@@ -1,0 +1,14 @@
+name = DrupalGap Webform
+description = Adds enhancements to the Webform module within DrupalGap.
+package = Mobile
+core = 7.x
+dependencies[] = drupalgap
+dependencies[] = webform
+dependencies[] = webform_service
+
+; Information added by Drupal.org packaging script on 2016-08-15
+version = "7.x-1.16"
+core = "7.x"
+project = "drupalgap"
+datestamp = "1471292955"
+

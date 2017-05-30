@@ -1,0 +1,42 @@
+@import '../base';
+
+$aether-grid-type: $aether-grid-type-desktop;
+$aether-columns: $aether-columns-desktop;
+$aether-grid-width: $aether-grid-width-desktop;
+
+html { 
+  overflow:auto; 
+  overflow-x:hidden;
+}
+
+@include limiter($aether-limiter-class, $aether-grid-width, $aether-break-wide, max);
+
+$aether_allColumns: "#{enumerate(".#{$aether-gridprefix}-#{$aether-media-handheld}", 1, $aether-columns-handheld)},
+#{enumerate(".#{$aether-gridprefix}-#{$aether-media-handheld-landscape}", 1, $aether-columns-handheld)},
+#{enumerate(".#{$aether-gridprefix}-#{$aether-media-tablet}", 1, $aether-columns-tablet)},
+#{enumerate(".#{$aether-gridprefix}-#{$aether-media-tablet-landscape}", 1, $aether-columns-tablet)},
+#{enumerate(".#{$aether-gridprefix}-#{$aether-media-desktop}", 1, $aether-columns-desktop)}";
+
+#{$aether_allColumns} {
+  @include grid-item-base;
+}
+
+$aether_allColumns2: ".#{$aether-gridprefix}-#{$aether-media-handheld}-right,
+.#{$aether-gridprefix}-#{$aether-media-handheld-landscape}-right,
+.#{$aether-gridprefix}-#{$aether-media-tablet}-right,
+.#{$aether-gridprefix}-#{$aether-media-tablet-landscape}-right";
+
+#{$aether_allColumns2} {
+  /* empty rule */
+}
+
+.#{$aether-gridprefix}-all-row {
+  @include container(full);
+  @include aether-grid-background;
+  .#{$aether-gridprefix}-all-row {
+    @include container(nested);
+  }
+}
+
+// Generate column classes for desktop media
+@include grid-classes(ltr, default);

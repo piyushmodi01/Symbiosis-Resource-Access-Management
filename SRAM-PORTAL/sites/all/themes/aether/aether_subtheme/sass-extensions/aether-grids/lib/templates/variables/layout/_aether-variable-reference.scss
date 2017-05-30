@@ -1,0 +1,59 @@
+// If you wish to override any of these variables, copy them your _base file
+// underneath, your existing variables. Be sure to set the base-font-size, to whatever
+// your base font size is or grid-debug will not reflect your vertical rhythm.
+
+// Legacy IE Support
+$legacy-support-for-ie6:              true;
+$legacy-support-for-ie7:              true;
+
+// This is used to limit and center the width of the page
+// Uncomment to override default class if you modified page.tpl.php
+// $aether-limiter-class:                ".limiter";
+
+// Either use a fluid, fixed or hybrid layout
+$aether-grid-type-desktop:            hybrid;
+$aether-grid-type-tablet-landscape:   hybrid;
+$aether-grid-type-tablet:             hybrid;
+$aether-grid-type-handheld-landscape: hybrid;
+$aether-grid-type-handheld:           hybrid;
+
+// Used by aether-grid/mediaqueries and aether-grid/visibility.
+// Media Query Breakpoints.
+$aether-break-wide:                   1160px;
+$aether-break-large:                  980px;
+$aether-break-medium:                 768px;
+$aether-break-small:                  480px;
+$aether-break-smallest:               400px;
+
+// Fixed Width Layouts
+$aether-grid-width-desktop:           1148px; // http://gridcalculator.dk/#/1148/12/20/20
+$aether-grid-width-tablet-landscape:  968px; // http://gridcalculator.dk/#/968/12/20/20
+$aether-grid-width-tablet:            752px; // http://gridcalculator.dk/#/752/12/20/20
+$aether-grid-width-handheld-landscape:428px; // http://gridcalculator.dk/#/428/12/20/20
+$aether-grid-width-handheld:          308px; // http://gridcalculator.dk/#/308/12/20/20
+
+// Used by aether-grid/debug, aether-grid/default-layout, aether-grid/mediaquery-layout.
+// Grid overlay
+$aether-show-grid-background:         false;
+$show-column-grid-backgrounds:        true;
+$grid-background-column-color:        hsl(0, 68%, 96%);
+$show-baseline-grid-backgrounds:      true;
+$grid-background-baseline-color:      hsl(0, 0%, 87%);
+
+// Vertical Rhythm
+$aether-base-line-height:             18px;
+$aether-base-font-size:               13px;
+
+// Configuration
+$aether-columns-desktop:              12; // The number of columns in your large grid.
+$aether-columns-tablet:               12; // The number of tablet columns in your medium grid.
+$aether-columns-handheld:             12; // The number of columns in your small grid.
+$aether-gutter-width:                 20px; // Fixed gutters across all grids.
+$aether-column-padding-h:             0; // Left right column padding across all grids.
+$aether-column-padding-v:             0; // Upper lower padding across all grids, usually 0.
+
+// Float direction
+$aether-float-direction:              left;
+
+// Box model
+$aether-box-sizing:                   border-box;

@@ -1,0 +1,95 @@
+/*
+ * Tabs
+ */
+
+//
+// Local mixins are documented here, the rest are Compass mixins.
+// Look here for the Compass mixin docs http://compass-style.org/index/mixins/
+//
+
+// Some variables to make altering the styling easier.
+$tabs-container-bg: #fff !default;
+$tabs-border: #bbb !default;
+
+/* Basic positioning styles for tabs. */
+.primary,
+.secondary {
+  @include clearfix; // Local mixin for clearing elements without markup.
+  @include trailing-border(1px, 0.45, $font-size-sm, solid);
+  border-color: $tabs-border;
+  list-style: none;
+  margin-left: 0;
+  white-space: nowrap;
+  li {
+    float: left; // letter
+    margin-left: 3px; // LTR
+  }
+  a {
+    display: block;
+    text-decoration: none;
+  }
+}
+
+/* Primary tabs */
+
+.primary {
+  margin-top: -1px; // Adjust upper margin to compensate for 1px tab border
+  padding: 0 2px;
+  li {
+    @include adjust-font-size-to($font-size-sm,0.9);
+    @include border-top-radius(4px);
+    @include single-text-shadow(#fff, 1px, 1px, 0);
+    border-color: $tabs-border;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+  }
+  li.active {
+    border-bottom: 1px solid $tabs-container-bg;
+    margin-bottom: -1px; // Overlap the ul's border.
+  }
+  a {
+    &:link,
+    &:visited {
+      @include border-top-radius(4px);
+      @include transition(background-color 0.3s);
+      background-color: #dedede;
+      color: #333;
+      letter-spacing: 1px;
+      padding: 0 1em;
+      text-align: center;
+    }
+    &:hover,
+    &:focus {
+      background-color: #e9e9e9;
+      border-color: #f2f2f2;
+      text-decoration: none;
+    }
+    &.active {
+      @include background-image(linear-gradient(rgba(#e9e9e9, 1), rgba(#e9e9e9, 0)));
+      background-color: transparent;
+      border-color: #fff;
+      .ie6-8 & {
+        @include filter-gradient(#e9e9e9, $tabs-container-bg);
+        display: inline-block;
+      }
+      // counteracts shrink-wrap bug introduced by haslayout fix for gradient
+    }
+  }
+}
+
+/* Secondary tabs */
+
+.secondary {
+  @include margin-leader(-.65, $font-size-sm);
+  font-size: px-to-em($font-size-sm); // Collapse bottom margin of ul.primary.
+  li {
+    @include margin-leader(0.061, $font-size-sm);
+    @include margin-trailer(0.061, $font-size-sm);
+    & li {
+      float: none;
+    }
+  }
+  a {
+    @include pill($font-size-sm, 2em, 1px, #f2f2f2);  // Local mixin for adding a styled box on links.
+  }
+}

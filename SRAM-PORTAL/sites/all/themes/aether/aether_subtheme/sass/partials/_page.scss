@@ -1,0 +1,95 @@
+/*
+ * Page
+ * 
+ * Styling for elements found in page.tpl.php
+ */
+
+//
+// Local mixins are documented here, the rest are Compass mixins.
+// Look here for the Compass mixin docs http://compass-style.org/index/mixins/
+//
+
+// Vertical Rhythm, add and/or remove page elements as your grid needs. 
+
+.user-inner,
+.header-inner,
+.main-menu-inner,
+.navigation-inner,
+.preface-inner,
+.feature-inner,
+.content-inner,
+.postscript-inner,
+.sidebar-inner,
+.footer-inner {
+  @include margin-trailer(1, $base-font-size);
+}
+
+.breadcrumb {
+  @include margin-leader(1, $font-size-normal);
+  @include margin-trailer(1, $font-size-normal);
+}
+
+
+/* Header */
+
+.branding {
+
+  .name-and-slogan {
+    @include inline-block;
+    @include padding-leader(1.5, $font-size-normal);
+    @include padding-trailer(1.5, $font-size-normal);
+  }
+
+  .logo {
+    @include inline-block;
+    padding: 0 10px 0 0;
+    img {
+      @include margin-leader(.7, $font-size-normal);
+      @include margin-trailer(0, $font-size-normal);
+      @include respond-to(tablet-landscape) {
+        @include margin-leader(1, $font-size-normal);
+      }
+    }
+  }
+
+  .site-name {
+    @include adjust-font-size-to($font-size-xxxl,1);
+    @include margin-leader(0.5, $font-size-xxxl);
+    @include margin-trailer(1, $font-size-xxxl);
+    font-family: $header-font-family;
+    font-weight: bold;
+    a {
+      @include link-colors($text-color, $hover: $text-color, $focus: $text-color, $visited: $text-color, $active: $text-color);
+      text-decoration: none;
+    }
+  }
+
+  .site-slogan {
+    @include adjust-font-size-to($font-size-xxl,1);
+  }
+
+}
+
+// Error Styles
+// Base alert styles
+div.messages {
+  @include background-image(linear-gradient(#5bc0de, #339bb9));
+  @include border-radius(4px);
+  @include margin-trailer(1, $font-size-normal);
+  @include rhythm-borders(1px, 0.5, $font-size-normal, solid);
+  @include text-shadow(rgba(255,255,255,.5) 0 1px 0);
+  background-position: 0;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  position: relative;
+  &.status {
+    @include background-image(linear-gradient(#deecc9, #cfe4ad));
+  }
+  &.warning {
+    @include background-image(linear-gradient(#fceec1, #eedc94));
+  }
+  &.error {
+    @include background-image(linear-gradient(#ee5f5b, #c43c35));
+    @include text-shadow(rgba(0, 0, 0, 0.25) 0 -1px 0);
+    color: white;
+  }
+}

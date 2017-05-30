@@ -1,0 +1,36 @@
+@import '../base';
+
+$aether-show-grid-background: true;
+
+@if $aether-grid-type-desktop or $aether-grid-type-tablet-landscape or $aether-grid-type-tablet or $aether-grid-type-tablet-landscape or $aether-grid-type-handheld-landscape or $aether-grid-type-handheld == fluid {
+  $grid-background-force-fluid: true;
+}
+
+// Desktop
+.#{$aether-gridprefix}-all-row {
+  @include aether-grid-background($aether-columns-desktop, $aether-grid-width-desktop);
+}
+// Handheld
+@include respond-to(handheld) {
+  .#{$aether-gridprefix}-all-row {
+    @include aether-grid-background($aether-columns-handheld, $aether-grid-width-handheld);
+  }
+}
+// Handheld-Landscape
+@include respond-to(handheld-landscape) {
+  .#{$aether-gridprefix}-all-row {
+    @include aether-grid-background($aether-columns-handheld, $aether-grid-width-handheld-landscape);
+  }
+}
+// Tablet
+@include respond-to(tablet)  {
+  .#{$aether-gridprefix}-all-row {
+    @include aether-grid-background($aether-columns-tablet, $aether-grid-width-tablet);
+  }
+}
+// Tablet-Landscape
+@include respond-to(tablet-landscape) {
+  .#{$aether-gridprefix}-all-row {
+    @include aether-grid-background($aether-columns-tablet, $aether-grid-width-tablet-landscape);
+  }
+}

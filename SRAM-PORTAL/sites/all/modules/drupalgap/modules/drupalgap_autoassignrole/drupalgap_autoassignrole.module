@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Implements hook_drupalgap_site_settings().
+ */
+function drupalgap_autoassignrole_drupalgap_site_settings($names) {
+  $names[] = 'autoassignrole_user_multiple';
+  $names[] = 'autoassignrole_user_selection';
+  $names[] = 'autoassignrole_user_required';
+  $names[] = 'autoassignrole_user_description';
+  $names[] = 'autoassignrole_user_fieldset_title';
+  $names[] = 'autoassignrole_user_title';
+  return $names;
+}
+
+/**
+ * Implements hook_services_request_postprocess_alter().
+ */
+function drupalgap_autoassignrole_services_request_postprocess_alter($controller, $args, &$result) {
+  if ($controller['callback'] == '_system_resource_connect') {
+    $roles = variable_get('autoassignrole_user_roles', array());
+    // @TODO change to use a single db_query.
+    foreach ($roles as $rid => $value) {
+      if (!$value) { continue; }
+      $role = user_role_load($rid);
+      $roles[$rid] = $role->name;
+    }
+    asort($roles);
+    $result->autoassignrole = array('autoassignrole_user_roles' => $roles);
+  }
+}

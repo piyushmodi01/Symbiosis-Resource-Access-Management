@@ -1,0 +1,20 @@
+@import '../base';
+
+$aether-float-direction: right;
+$aether-grid-type: $aether-grid-type-desktop;
+$aether-columns: $aether-columns-desktop;
+$aether-grid-width: $aether-grid-width-desktop;
+$aether-media: $aether-media-desktop;
+
+$aether_allColumns: "#{enumerate(".#{$aether-gridprefix}-#{$aether-media-handheld}", 1, $aether-columns-handheld)},
+#{enumerate(".#{$aether-gridprefix}-#{$aether-media-handheld-landscape}", 1, $aether-columns-handheld)},
+#{enumerate(".#{$aether-gridprefix}-#{$aether-media-tablet}", 1, $aether-columns-tablet)},
+#{enumerate(".#{$aether-gridprefix}-#{$aether-media-tablet-landscape}", 1, $aether-columns-tablet)},
+#{enumerate(".#{$aether-gridprefix}-#{$aether-media-desktop}", 1, $aether-columns-desktop)}";
+
+#{$aether_allColumns} {
+  float: $aether-float-direction;
+}
+
+// Generate column classes for desktop media
+@include grid-classes(rtl);

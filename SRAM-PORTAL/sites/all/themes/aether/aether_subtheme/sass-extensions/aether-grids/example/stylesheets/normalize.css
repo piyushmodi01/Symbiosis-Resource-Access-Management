@@ -1,0 +1,128 @@
+/* Normalize */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, dialog, summary { display: block; }
+
+p, blockquote, q, pre, address, hr, code, samp, dl, ol, ul, form, table, fieldset, menu, figure, figcaption, button, hr { margin-top: 0em; margin-bottom: 1.38462em; }
+
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+
+audio:not([controls]) { display: none; }
+
+[hidden] { display: none; }
+
+html { font-size: 100%; height: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+
+html, button, input, select, textarea { font-family: sans-serif; }
+
+body { margin: 0; }
+
+button, input, select, textarea { color: #ccc; font-family: "Helvetica Neue", "Helvetica", Arial, "Liberation Sans", FreeSans, sans-serif; }
+
+/* Links */
+a:focus { outline: thin dotted; }
+
+a:hover, a:active { outline: 0; }
+
+img, object, video { max-width: 100%; }
+
+@media only screen and (max-width: 768px) { .ie6 #main img { width: 100%; } }
+img { border: 0; }
+.ie6-7 img { -ms-interpolation-mode: bicubic; }
+.ie6 .region-sidebar-first img, .ie6 .region-sidebar-second img { width: 100%; }
+
+svg:not(:root) { overflow: hidden; }
+
+.ie6-7 table button, .ie6-7 table input { overflow: auto; }
+
+/* Lists */
+dl, menu, ol, ul, .item-list ul { margin: 1.38462em 0; }
+
+.item-list ul li { margin: 0; }
+
+dd { /* LTR */ margin: 0 0 0 1.625em; }
+
+ul ul, ul ol, ol ul, ol ol, .item-list ul ul, .item-list ul ol, .item-list ol ul, .item-list ol ol { margin: 0; }
+
+/* Addresses paddings set differently in IE6/7 */
+menu, ol, ul, .item-list ul { padding: 0 0 0 1.625em; }
+
+nav ul, nav ol { list-style: none; list-style-image: none; }
+
+@media print { * { background: transparent !important; color: black !important; filter: none !important; -ms-filter: none !important; }
+  a { text-decoration: underline; }
+  a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  thead { display: table-header-group; }
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; } }
+html { font-size: 81.25%; line-height: 1.38462em; }
+
+/* Headings/small */
+h1, h2, h3, h4, h5, h6 { font-family: "Helvetica Neue", "Helvetica", Arial, "Liberation Sans", FreeSans, sans-serif; font-size: 1em; font-weight: bold; }
+
+h1 { font-size: 2.30769em; line-height: 1.2em; margin-top: 0em; margin-bottom: 0.6em; }
+
+h2 { font-size: 1.84615em; line-height: 1.5em; margin-top: 0em; margin-bottom: 0.75em; }
+
+h3 { font-size: 1.38462em; line-height: 1em; margin-top: 0em; margin-bottom: 1em; }
+
+h4 { font-size: 1.23077em; line-height: 1.125em; margin-top: 0em; margin-bottom: 1.125em; }
+
+h5 { font-size: 1.07692em; line-height: 1.28571em; margin-top: 0em; margin-bottom: 1.28571em; }
+
+h6 { font-size: 1.07692em; line-height: 1.28571em; margin-top: 0em; margin-bottom: 1.28571em; color: #eee; }
+
+small { margin-top: 0em; margin-bottom: 1.8em; font-size: 0.76923em; }
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: #eee; }
+
+/* Abbreviations */
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+
+sub { font-size: 0.76923em; line-height: 0em; position: relative; vertical-align: baseline; }
+
+sup { font-size: 0.76923em; line-height: 0em; position: relative; top: -0.5em; vertical-align: baseline; }
+
+sub { bottom: -0.25em; }
+
+hr { border: 0; border-bottom: 1px solid #ccc; display: block; height: 1px; }
+
+/* Figures */
+figure { margin: 0; }
+
+pre { font-size: 1em; line-height: 1.38462em; font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace; white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+code, kbd, samp { font-size: 1em; line-height: 1.24615em; font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace; }
+
+/* Quotes */
+blockquote, q { quotes: none; }
+
+blockquote, q, cite { font-style: italic; quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+blockquote { border-left: 1px solid #ccc; padding-left: 1.625em; padding-right: 20px; }
+blockquote > p { padding: 0; }
+
+/* Description Lists */
+dl { margin-bottom: 1.38462em; }
+dl dt, dl dd { line-height: 1.38462em; }
+dl dt { font-weight: bold; }
+dl dd { margin-left: 0.8125em; }
+
+/* Marked/inserted/deleted text */
+mark { background: #ddd; }
+
+ins { background: #ddd; text-decoration: none; }
+
+del { text-decoration: line-through; }
+
+/* Others */
+strong, b, dt { font-weight: bold; }
+
+dfn { font-style: italic; }
+
+var, address { font-style: normal; }

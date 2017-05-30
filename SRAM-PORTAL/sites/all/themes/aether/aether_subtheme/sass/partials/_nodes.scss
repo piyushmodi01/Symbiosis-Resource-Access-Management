@@ -1,0 +1,69 @@
+/*
+ * Node Styling
+ */
+
+//
+// Local mixins are documented here, the rest are Compass mixins.
+// Look here for the Compass mixin docs http://compass-style.org/index/mixins/
+//
+
+// Node wrapper
+.node { 
+  // Preview of the content before submitting new or updated content
+  // Drupal core uses a #ffffea background
+  .preview & {  
+  }
+
+  .node-title { 
+  }
+
+  .user-picture {
+  }
+
+  .field {
+    @include margin-leader(1, $font-size-normal);
+    @include margin-trailer(1, $font-size-normal);
+  }
+
+  .submitted {
+    @include margin-leader(1, $font-size-normal);
+    @include margin-trailer(1, $font-size-normal);
+    color: $text-color-light;
+  }
+
+  .content { 
+  }
+
+  ul.links {
+    @include margin-leader(1, $font-size-normal);
+    @include margin-trailer(1, $font-size-normal);
+  }
+
+}
+
+.node-promoted { 
+}
+
+.node-sticky { 
+}
+
+.node-by-viewer { 
+}
+
+.node-teaser {
+  .submitted {
+    @include margin-trailer(1, $font-size-normal);
+  }
+}
+
+.node-page { 
+}
+
+.node-article { 
+}
+
+// Drupal core uses a #fff4f4 background
+.node-unpublished { 
+  p.unpublished {
+  }
+}

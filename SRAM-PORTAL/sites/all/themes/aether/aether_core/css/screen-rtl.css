@@ -1,0 +1,104 @@
+/* Normalize RTL */
+/* Lists */
+dd {
+  margin: 0 1.625em 0 0;
+}
+
+menu,
+ol,
+ul,
+.item-list ul {
+  padding: 0 1.625em 0 0;
+}
+
+/* Type */
+blockquote {
+  border-left: 0;
+  border-right: 1px solid #dddddd;
+  padding-left: 0;
+  padding-right: 1.625em;
+}
+
+dl dd {
+  margin-left: 0;
+  margin-right: 0.8125em;
+}
+
+/* Tables */
+.bordered-table th + th,
+.bordered-table td + td,
+.bordered-table th + td {
+  border-left: 0;
+  border-right: 1px solid #ddd;
+}
+
+/* Tabs */
+.primary,
+.secondary {
+  margin-right: 0;
+}
+.primary li,
+.secondary li {
+  float: right;
+  margin-left: 0;
+  margin-right: 3px;
+}
+
+/* Navigation */
+#secondary {
+  float: left;
+}
+
+ul.links.inline li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+  white-space: nowrap;
+  display: inline;
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+ul.links.inline li:first-child, ul.links.inline li.first {
+  padding-right: 0;
+}
+ul.links.inline li:last-child {
+  padding-left: 0;
+}
+ul.links.inline li.last {
+  padding-left: 0;
+}
+
+ul.action-links li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+  white-space: nowrap;
+  display: inline;
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+ul.action-links li:first-child, ul.action-links li.first {
+  padding-right: 0;
+}
+ul.action-links li:last-child {
+  padding-left: 0;
+}
+ul.action-links li.last {
+  padding-left: 0;
+}
+
+/* Pages */
+.grid-dis-header #hgroup-first {
+  display: inline;
+  float: right;
+}
+.grid-dis-header #hgroup-second {
+  display: inline;
+  float: right;
+}
+.grid-dis-header #hgroup-third {
+  display: inline;
+  float: left;
+}

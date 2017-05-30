@@ -1,0 +1,12 @@
+/* Tabs */
+
+// Basic positioning styles shared by primary and secondary tabs.
+.primary,
+.secondary {
+  margin-right: 0;
+  li {
+    float: right;
+    margin-left: 0;
+    margin-right: 3px;
+  }
+}

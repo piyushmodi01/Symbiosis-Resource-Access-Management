@@ -1,0 +1,168 @@
+.g-h-1, .g-h-2, .g-h-3, .g-h-4, .g-h-5, .g-h-6, .g-h-7, .g-h-8, .g-h-9, .g-h-10, .g-h-11, .g-h-12,
+.g-hl-1, .g-hl-2, .g-hl-3, .g-hl-4, .g-hl-5, .g-hl-6, .g-hl-7, .g-hl-8, .g-hl-9, .g-hl-10, .g-hl-11, .g-hl-12,
+.g-t-1, .g-t-2, .g-t-3, .g-t-4, .g-t-5, .g-t-6, .g-t-7, .g-t-8, .g-t-9, .g-t-10, .g-t-11, .g-t-12,
+.g-tl-1, .g-tl-2, .g-tl-3, .g-tl-4, .g-tl-5, .g-tl-6, .g-tl-7, .g-tl-8, .g-tl-9, .g-tl-10, .g-tl-11, .g-tl-12,
+.g-d-1, .g-d-2, .g-d-3, .g-d-4, .g-d-5, .g-d-6, .g-d-7, .g-d-8, .g-d-9, .g-d-10, .g-d-11, .g-d-12 {
+  float: right;
+}
+
+.g-d-o1 {
+  margin-right: 94px;
+}
+
+.g-d-o2 {
+  margin-right: 188px;
+}
+
+.g-d-o3 {
+  margin-right: 282px;
+}
+
+.g-d-o4 {
+  margin-right: 376px;
+}
+
+.g-d-o5 {
+  margin-right: 470px;
+}
+
+.g-d-o6 {
+  margin-right: 564px;
+}
+
+.g-d-o7 {
+  margin-right: 658px;
+}
+
+.g-d-o8 {
+  margin-right: 752px;
+}
+
+.g-d-o9 {
+  margin-right: 846px;
+}
+
+.g-d-o10 {
+  margin-right: 940px;
+}
+
+.g-d-o11 {
+  margin-right: 1034px;
+}
+
+.g-d-push1 {
+  margin-right: 104px;
+  margin-left: -84px;
+}
+
+.g-d-push2 {
+  margin-right: 198px;
+  margin-left: -178px;
+}
+
+.g-d-push3 {
+  margin-right: 292px;
+  margin-left: -272px;
+}
+
+.g-d-push4 {
+  margin-right: 386px;
+  margin-left: -366px;
+}
+
+.g-d-push5 {
+  margin-right: 480px;
+  margin-left: -460px;
+}
+
+.g-d-push6 {
+  margin-right: 574px;
+  margin-left: -554px;
+}
+
+.g-d-push7 {
+  margin-right: 668px;
+  margin-left: -648px;
+}
+
+.g-d-push8 {
+  margin-right: 762px;
+  margin-left: -742px;
+}
+
+.g-d-push9 {
+  margin-right: 856px;
+  margin-left: -836px;
+}
+
+.g-d-push10 {
+  margin-right: 950px;
+  margin-left: -930px;
+}
+
+.g-d-push11 {
+  margin-right: 1044px;
+  margin-left: -1024px;
+}
+
+.g-d-pull1 {
+  margin-right: -84px;
+}
+
+.g-d-pull2 {
+  margin-right: -178px;
+}
+
+.g-d-pull3 {
+  margin-right: -272px;
+}
+
+.g-d-pull4 {
+  margin-right: -366px;
+}
+
+.g-d-pull5 {
+  margin-right: -460px;
+}
+
+.g-d-pull6 {
+  margin-right: -554px;
+}
+
+.g-d-pull7 {
+  margin-right: -648px;
+}
+
+.g-d-pull8 {
+  margin-right: -742px;
+}
+
+.g-d-pull9 {
+  margin-right: -836px;
+}
+
+.g-d-pull10 {
+  margin-right: -930px;
+}
+
+.g-d-pull11 {
+  margin-right: -1024px;
+}
+
+.g-d-right {
+  display: inline;
+  float: left;
+}
+
+.g-d-left {
+  display: inline;
+  float: right;
+}
+
+.g-d-f {
+  clear: right;
+}
+
+.g-d-l {
+  clear: left;
+}

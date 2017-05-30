@@ -1,0 +1,12 @@
+@import 'base';
+@import "compass/typography/vertical_rhythm";
+
+.demo-container {
+    @include margin-trailer(1, $base-font-size);
+    background-color: #afafaf;
+    border-radius: 3px 3px 3px 3px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

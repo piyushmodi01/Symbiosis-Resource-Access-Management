@@ -1,0 +1,17 @@
+/*
+ * Patterns
+ * Use the pattern classes here as extends in other stylesheets.
+ */
+
+//
+// Local mixins are documented here, the rest are Compass mixins.
+// Look here for the Compass mixin docs http://compass-style.org/index/mixins/
+//
+
+.no-bullets {
+  @include no-bullets; // Local mixin to remove bullets from a list, apply to a ul.
+}
+
+.ellipsis {
+  @include ellipsis; // Local mixin to add an ellipsis.
+}

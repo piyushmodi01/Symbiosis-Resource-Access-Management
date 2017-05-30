@@ -1,0 +1,16 @@
+/* Normalize RTL */
+
+/* Lists */
+
+dd {
+  margin: 0 $typographic-indent 0 0;
+}
+
+// Addresses paddings set differently in IE6/7
+
+menu,
+ol,
+ul,
+.item-list ul {
+  padding: 0 $typographic-indent 0 0;
+}
